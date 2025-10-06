@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detail Mobil - New Calya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden; /* Menambahkan overflow hidden untuk mencegah konten keluar */
+        }
+        h2 {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        h3 {
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        /* Special Features */
+        .special-features {
+            display: flex;
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #555;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 150px;
+        }
+        .feature-item i {
+            color: #dc143c;
+            font-size: 16px;
+        }
+        /* Gallery Single Image */
+        .gallery {
+            position: relative;
+            margin-bottom: 15px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+        .single-image-container {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Menambahkan overflow hidden untuk gambar */
+        }
+        .single-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+        .gallery-header i {
+            font-size: 18px;
+            color: #555;
+        }
+        .image-counter {
+            font-size: 14px;
+            color: #666;
+            font-weight: normal;
+        }
+        /* Video */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            max-width: 100%; /* Menambahkan max-width */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            max-width: 100%; /* Menambahkan max-width */
+        }
+        /* Description */
+        .description h2 {
+            color: #dc143c;
+            margin-bottom: 5px;
+        }
+        .description p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .description em {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+            display: block;
+        }
+        /* Price List */
+        .price-list {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fff;
+            margin-bottom: 20px;
+            overflow: hidden; /* Menambahkan overflow hidden */
+        }
+        .price-list h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .price-list h3 i {
+            color: #dc143c;
+        }
+        .price-availability {
+            background: #ffeded;
+            color: #dc143c;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .price-table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 15px;
+            -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih halus di iOS */
+            width: 100%; /* Menambahkan width 100% */
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            color: #555;
+            min-width: 100%; /* Mengubah dari max-width menjadi min-width */
+        }
+        .price-table th, .price-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .price-table th {
+            background: #f9f9f9;
+            font-weight: 600;
+        }
+        .price-table .price-column {
+            font-weight: bold;
+            color: #dc143c;
+            white-space: nowrap;
+        }
+        .price-table .action-column {
+            text-align: center;
+            width: 40px;
+        }
+        .price-table .type-column {
+            min-width: 180px;
+        }
+        .chat-icon {
+            color: #25d366;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .chat-icon:hover {
+            transform: scale(1.1);
+        }
+        /* Specification - Perubahan Responsif */
+        .specification {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fff;
+            overflow: hidden; /* Menambahkan overflow hidden */
+        }
+        .spec-table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 15px;
+            -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih halus di iOS */
+            width: 100%; /* Menambahkan width 100% */
+        }
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            color: #555;
+        }
+        .spec-table th, .spec-table td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .spec-table th {
+            background: #f9f9f9;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .spec-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .spec-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        /* Tampilan alternatif untuk spesifikasi di layar kecil */
+        .spec-cards {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%; /* Menambahkan width 100% */
+        }
+        .spec-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 12px;
+            border-left: 4px solid #dc143c;
+            word-wrap: break-word; /* Menambahkan word-wrap untuk teks panjang */
+            overflow: hidden; /* Menambahkan overflow hidden */
+        }
+        .spec-card-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .spec-card-value {
+            color: #555;
+            font-size: 14px;
+            word-wrap: break-word; /* Menambahkan word-wrap untuk teks panjang */
+        }
+        /* Layout */
+        .flex-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .gallery-spec-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        .gallery-container {
+            flex: 2;
+            min-width: 300px;
+        }
+        .flex-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px;
+                margin: 10px;
+            }
+            
+            .special-features {
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .feature-item {
+                font-size: 13px;
+                min-width: 120px;
+            }
+            
+            .feature-item i {
+                font-size: 14px;
+            }
+            
+            .section {
+                margin-bottom: 20px;
+            }
+            
+            .single-image-container {
+                height: 280px;
+            }
+            
+            .gallery-spec-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .gallery-container {
+                width: 100%;
+            }
+            
+            .specification {
+                width: 100%;
+            }
+            
+            .flex-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .price-list, .specification {
+                padding: 12px;
+            }
+            
+            .price-table {
+                font-size: 13px;
+            }
+            
+            .price-table th, .price-table td {
+                padding: 8px;
+            }
+            
+            .spec-table {
+                font-size: 13px;
+            }
+            
+            .spec-table th, .spec-table td {
+                padding: 6px 8px;
+            }
+            
+            .description p {
+                font-size: 13px;
+            }
+            
+            h3 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .gallery-header {
+                font-size: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 5px;
+            }
+            
+            .special-features {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .feature-item {
+                min-width: 100%;
+            }
+            
+            .single-image-container {
+                height: 220px;
+            }
+            
+            .price-table {
+                font-size: 12px;
+            }
+            
+            .price-table th, .price-table td {
+                padding: 6px;
+            }
+            
+            .description p {
+                font-size: 12px;
+            }
+            
+            h3 {
+                font-size: 15px;
+            }
+            
+            .gallery-header {
+                font-size: 14px;
+            }
+            
+            /* Perubahan khusus untuk spesifikasi di layar sangat kecil */
+            .spec-table-wrapper {
+                display: none;
+            }
+            
+            .spec-cards {
+                display: flex;
+            }
+            
+            /* Memperbaiki masalah tabel harga di layar kecil */
+            .price-table .type-column {
+                min-width: 120px; /* Mengurangi min-width untuk type column */
+            }
+            
+            .price-table .price-column {
+                font-size: 11px; /* Mengurangi ukuran font untuk harga */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.history.back()" style="background:#dc143c; color:#fff; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-bottom:15px;">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        
+        <!-- Special Features -->
+        <section class="section special-features">
+            <div class="feature-item"><i class="fas fa-check-circle"></i> Promo DP Rendah</div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i> Diskon Paling Besar</div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i> Berkas Kami Bantu</div>
+        </section>
+        
+        <!-- Gallery and Specification side by side -->
+        <section class="section gallery-spec-container">
+            <div class="gallery-container">
+                <div class="gallery-header">
+                    <h3>Galeri Gambar</h3>
+                    <div>
+                        <span class="image-counter">1</span>
+                        <i class="fas fa-camera"></i>
+                    </div>
+                </div>
+                <div class="gallery" id="carGallery">
+                    <div class="single-image-container" id="singleImageContainer">
+                        <!-- Gambar akan dimuat secara dinamis dengan JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <section class="section specification">
+                <h3><i class="fas fa-car"></i> Spesifikasi</h3>
+                
+                <!-- Wrapper untuk tabel dengan overflow -->
+                <div class="spec-table-wrapper" id="specTableWrapper">
+                    <table class="spec-table" id="specTable">
+                        <thead>
+                            <tr>
+                                <th>Spec</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="specTableBody">
+                            <!-- Spesifikasi akan diisi secara dinamis -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Tampilan kartu untuk layar kecil -->
+                <div class="spec-cards" id="specCards">
+                    <!-- Kartu spesifikasi akan diisi secara dinamis -->
+                </div>
+            </section>
+        </section>
+         
+        <!-- Video -->
+        <section class="section video-container">
+            <iframe id="carVideo" src="https://www.youtube.com/embed/IsQaOQ9N91w" title="Toyota Calya Video" allowfullscreen></iframe>
+        </section>
+       
+        <div class="flex-row">
+            <!-- Description -->
+            <section class="section flex-column description">
+                <h2 id="carName">New Calya</h2>
+                <strong id="carTitle" style="color:#dc143c;">Toyota New Calya</strong>
+                <em id="carTagline">MPV Kompak Untuk Keluarga</em>
+                <p id="carDescription1">
+                    New Calya adalah MPV kompak yang dirancang untuk keluarga Indonesia dengan harga terjangkau. Dengan kabin yang luas dan konsumsi bahan bakar yang efisien, Calya adalah pilihan tepat untuk mobil keluarga.
+                </p>
+            </section>
+            
+            <!-- Price List -->
+            <section class="section price-list">
+                <h3><i class="fas fa-car"></i> Daftar Harga</h3>
+                <div id="priceAvailability" class="price-availability">Tersedia 2 Type</div>
+                <div class="price-table-wrapper">
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th class="type-column">Type</th>
+                                <th class="price-column">Harga</th>
+                                <th class="action-column">Whatsapp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="priceTableBody">
+                            <!-- Harga akan diisi secara dinamis -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dapatkan parameter dari URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const carType = urlParams.get('car');
+            
+            // Data mobil berdasarkan tipe
+            const carData = {
+                'corolla-cross': {
+                    name: 'Corolla Cross',
+                    tagline: 'SUV Hybrid Untuk Keluarga Modern',
+                    description: 'Toyota Corolla Cross adalah SUV hybrid yang menggabungkan efisiensi bahan bakar dengan performa yang tangguh. Dengan desain yang stylish dan fitur keselamatan canggih, Corolla Cross siap menemani petualangan Anda.',
+                    videoId: 'Miek9Fe1YRM',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.8L Hybrid' },
+                        { spec: 'Tenaga Maksimum', keterangan: '72 PS / 5.500 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '142 Nm / 3.600 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.490 mm x 1.840 mm x 1.620 mm' },
+                        { spec: 'Berat', keterangan: '1.490 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '36 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: '1.8 G CVT', value: 'Rp 574.000.000' },
+                        { type: '1.8 V CVT', value: 'Rp 599.000.000' }
+                    ],
+                    images: [
+                        'assets/corolla_cross.png'
+                    ]
+                },
+                'kijang-innova-zenix': {
+                    name: 'Kijang Innova Zenix',
+                    tagline: 'MPV Premium Generasi Terbaru',
+                    description: 'Kijang Innova Zenix adalah MPV premium dengan teknologi hybrid yang canggih. Dengan desain yang mewah dan fitur keselamatan terlengkap, Innova Zenix siap memberikan kenyamanan maksimal bagi keluarga Indonesia.',
+                    videoId: 'yFGiFpKw14A',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '2.0L Hybrid' },
+                        { spec: 'Tenaga Maksimum', keterangan: '152 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '188 Nm / 4.400 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.755 mm x 1.850 mm x 1.795 mm' },
+                        { spec: 'Berat', keterangan: '1.745 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '52 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '2.0 V CVT', value: 'Rp 430.000.000' },
+                        { type: '2.0 G CVT', value: 'Rp 475.000.000' },
+                        { type: '2.0 Q CVT', value: 'Rp 510.000.000' }
+                    ],
+                    images: [
+                        'assets/innova_zenix.png'
+    
+                    ]
+                },
+                'all-new-veloz': {
+                    name: 'All New Veloz',
+                    tagline: 'MPV Sporty Dengan Performa Terbaik',
+                    description: 'All New Veloz adalah varian sporty dari Avanza dengan desain yang lebih agresif dan fitur yang lebih lengkap. Dengan mesin 1.5L yang tangguh, Veloz siap memberikan pengalaman berkendara yang menyenangkan.',
+                    videoId: 'kJQP7kiw5Fk',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.5L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '106 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '140 Nm / 4.200 rpm' },
+                        { spec: 'Transmisi', keterangan: '5MT/4AT' },
+                        { spec: 'Dimensi', keterangan: '4.470 mm x 1.750 mm x 1.700 mm' },
+                        { spec: 'Berat', keterangan: '1.180 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '45 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '1.5 M/T', value: 'Rp 292.000.000' },
+                        { type: '1.5 A/T', value: 'Rp 305.000.000' }
+                    ],
+                    images: [
+                        'assets/all_new_veloz.png'
+                    ]
+                },
+                'new-alphard': {
+                    name: 'New Alphard',
+                    tagline: 'MPV Premium Termewah Untuk Keluarga',
+                    description: 'Dengan semangat continuous improvement, MPV premium generasi terbaru yang kini hadir lebih mewah dan semakin canggih. All New Alphard memperoleh begitu banyak sentuhan inovasi, MPV ini juga memperkuat positioning-nya di segmen luxury vehicle yang sangat eksklusif.',
+                    videoId: 'hTWKbfoikeg',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '2AR-FE 2.494 cc 4-silinder' },
+                        { spec: 'Tenaga Maksimum', keterangan: '181 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '235 Nm / 4.100 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.945 mm x 1.850 mm x 1.895 mm' },
+                        { spec: 'Berat', keterangan: '2.190 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '65 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '2.5 G CVT', value: 'Rp 1.598.550.000' },
+                        { type: '2.5 G CVT (Premium Color)', value: 'Rp 1.602.050.000' },
+                        { type: '2.5 HYBRID CVT', value: 'Rp 1.676.750.000' },
+                        { type: '2.5 HYBRID CVT (Premium Color)', value: 'Rp 1.680.250.000' },
+                        { type: '2.5 HYBRID CVT LUX MODELISTA', value: 'Rp 1.741.650.000' },
+                        { type: '2.5 HYBRID CVT LUX MODELISTA (Premium Color)', value: 'Rp 1.745.150.000' }
+                    ],
+                    images: [
+                        'assets/toyota alphard.png'
+                    ]
+                },
+                'new-yaris-cross': {
+                    name: 'New Yaris Cross',
+                    tagline: 'SUV Kompak Untuk Petualangan Urban',
+                    description: 'New Yaris Cross adalah SUV kompak yang dirancang untuk mobilitas urban dengan sentuhan petualangan. Dengan desain yang stylish dan teknologi hybrid, Yaris Cross siap menemani aktivitas harian Anda dengan gaya.',
+                    videoId: 'XPUjyLyI7qw',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.5L Hybrid' },
+                        { spec: 'Tenaga Maksimum', keterangan: '111 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '141 Nm / 4.000 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.310 mm x 1.770 mm x 1.615 mm' },
+                        { spec: 'Berat', keterangan: '1.200 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '36 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: '1.5 G CVT', value: 'Rp 353.000.000' },
+                        { type: '1.5 S CVT', value: 'Rp 373.000.000' }
+                    ],
+                    images: [
+                        'assets/all_new_yaris_cross_hev.png', 
+                    ]
+                },
+                'land-cruizer': {
+                    name: 'Land Cruizer',
+                    tagline: 'SUV Tangguh Untuk Segala Medan',
+                    description: 'Land Cruizer adalah SUV legendaris yang terkenal dengan ketangguhannya di segala medan. Dengan performa mesin yang powerful dan fitur off-road canggih, Land Cruizer adalah pilihan tepat untuk petualangan ekstrem. dan Transmisi Direct Shift-10AT 10-percepatan menghadirkan berbagai langkah untuk meminimalkan kehilangan energi dan meningkatkan efisiensi transmisi. Permukaan gigi gir diproses menggunakan teknik baru untuk menurunkan koefisien gesek saat gigi gir terpasang.',
+                    videoId: 'N6ZPbHkpJxA',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '4.0L V6 Diesel' },
+                        { spec: 'Tenaga Maksimum', keterangan: '231 PS / 3.400 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '610 Nm / 1.600-2.000 rpm' },
+                        { spec: 'Transmisi', keterangan: '6AT' },
+                        { spec: 'Dimensi', keterangan: '4.950 mm x 1.980 mm x 1.920 mm' },
+                        { spec: 'Berat', keterangan: '2.620 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '93 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: '4.0 VX-R', value: 'Rp 2.629.000.000' },
+                        { type: '4.0 GR Sport', value: 'Rp 2.704.400.000' }
+                    ],
+                    images: [
+                        'assets/land_cruiser.png' 
+                    ]
+                },
+                'all-new-voxy': {
+                    name: 'All New Voxy',
+                    tagline: 'MPV Premium Dengan Kenyamanan Maksimal',
+                    description: 'All New Voxy adalah MPV premium yang menawarkan kenyamanan maksimal dengan desain elegan dan fitur canggih. Cocok untuk keluarga yang mengutamakan kenyamanan dan gaya dalam setiap perjalanan.',
+                    videoId: 'PZu2tEd54Hc',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '2.0L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '152 PS / 6.100 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '193 Nm / 3.600 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.695 mm x 1.730 mm x 1.850 mm' },
+                        { spec: 'Berat', keterangan: '1.670 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '55 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '2.0 L CVT', value: 'Rp 532.000.000' },
+                        { type: '2.0 G CVT', value: 'Rp 578.000.000' }
+                    ],
+                    images: [
+                        'assets/all_new_voxy.png' 
+                    ]
+                },
+                'all-new-avanza': {
+                    name: 'All New Avanza',
+                    tagline: 'MPV Terlaris Dengan Tampilan Baru',
+                    description: 'All New Avanza hadir dengan tampilan baru yang lebih modern dan sporty. Sebagai MPV terlaris di Indonesia, Avanza terus meningkatkan kualitasnya untuk memenuhi kebutuhan keluarga Indonesia.',
+                    videoId: 'ARK5zXz8shc',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.5L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '106 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '140 Nm / 4.200 rpm' },
+                        { spec: 'Transmisi', keterangan: '5MT/4AT' },
+                        { spec: 'Dimensi', keterangan: '4.390 mm x 1.730 mm x 1.700 mm' },
+                        { spec: 'Berat', keterangan: '1.125 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '45 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '1.5 M/T', value: 'Rp 243.000.000' },
+                        { type: '1.5 A/T', value: 'Rp 263.000.000' }
+                    ],
+                    images: [
+                        'assets/all_new_avanza.png' 
+                    ]
+                },
+                'new-camry': {
+                    name: 'New Camry',
+                    tagline: 'Sedan Premium Dengan Kenyamanan Optimal',
+                    description: 'New Camry adalah sedan premium yang menawarkan kenyamanan optimal dengan desain elegan dan fitur-fitur canggih. Cocok untuk eksekutif yang mengutamakan kenyamanan dan prestise.',
+                    videoId: 'j_Jfq0aXkFE',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '2.5L Hybrid' },
+                        { spec: 'Tenaga Maksimum', keterangan: '178 PS / 5.700 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '221 Nm / 3.600-5.200 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.885 mm x 1.840 mm x 1.445 mm' },
+                        { spec: 'Berat', keterangan: '1.610 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '50 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: 'HEV Type hybrid', value: 'Rp 973.300.000' }
+                    ],
+                    images: [
+                        'assets/new_camry.png' 
+
+                    ]
+                },
+                'new-altis': {
+                    name: 'New Altis',
+                    tagline: 'Sedan Sporty Dengan Performa Tinggi',
+                    description: 'New Altis adalah sedan sporty yang menawarkan performa tinggi dengan desain aerodinamis. Dilengkapi dengan fitur-fitur keselamatan canggih untuk memberikan pengalaman berkendara yang menyenangkan.',
+                    videoId: 'YywEnIRdWsA',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.8L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '140 PS / 6.400 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '177 Nm / 4.000 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.635 mm x 1.780 mm x 1.435 mm' },
+                        { spec: 'Berat', keterangan: '1.315 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '50 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: '1.8 V CVT', value: 'Rp 523.000.000' },
+                        { type: '1.8 G CVT', value: 'Rp 483.000.000' }
+                    ],
+                    images: [
+                        'assets/altis.png'
+
+                    ]
+                },
+                'all-new-vios': {
+                    name: 'All New Vios',
+                    tagline: 'Sedan Kompeten Untuk Mobilitas Urban',
+                    description: 'All New Vios adalah sedan yang kompeten untuk mobilitas urban dengan desain sporty dan efisien dalam konsumsi bahan bakar. Pilihan tepat untuk mobil pertama atau kendaraan harian.',
+                    videoId: 'zTzDZDAUjv0',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.5L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '107 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '140 Nm / 4.200 rpm' },
+                        { spec: 'Transmisi', keterangan: '5MT/CVT' },
+                        { spec: 'Dimensi', keterangan: '4.425 mm x 1.730 mm x 1.475 mm' },
+                        { spec: 'Berat', keterangan: '1.110 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '42 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: '1.5 G M/T', value: 'Rp 315.000.000' },
+                        { type: '1.5 G CVT', value: 'Rp 335.000.000' }
+                    ],
+                    images: [
+                        'assets/all_new_vios.png'
+                    ]
+                },
+                'gr-86': {
+                    name: 'Toyota GR-86',
+                    tagline: 'Sports Car Pure Driving Pleasure',
+                    description: 'Toyota GR-86 adalah sports car yang dirancang untuk memberikan pure driving pleasure. Dengan mesin boxer dan penggerak roda belakang, GR-86 menawarkan pengalaman berkendara yang otentik.',
+                    videoId: 'Nvedr1AeQt8',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '2.4L Boxer' },
+                        { spec: 'Tenaga Maksimum', keterangan: '234 PS / 7.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '250 Nm / 3.700 rpm' },
+                        { spec: 'Transmisi', keterangan: '6MT/6AT' },
+                        { spec: 'Dimensi', keterangan: '4.265 mm x 1.775 mm x 1.310 mm' },
+                        { spec: 'Berat', keterangan: '1.270 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '50 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '4' }
+                    ],
+                    prices: [
+                        { type: 'All New GR 86', value: 'Rp 1.029.000.000' }
+                    ],
+                    images: [
+                        'assets/gr_86.png' 
+  
+                    ]
+                },
+                'supra': {
+                    name: 'Toyota Supra',
+                    tagline: 'Sports Car Legendaris Dengan Performa Tinggi',
+                    description: 'Toyota Supra adalah sports car legendaris yang kini hadir dengan performa tinggi dan teknologi modern. Dengan desain yang ikonik dan mesin yang powerful, Supra siap memberikan sensasi berkendara yang luar biasa.',
+                    videoId: 'n3Kj56Bu1-0',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '3.0L Turbo' },
+                        { spec: 'Tenaga Maksimum', keterangan: '340 PS / 5.000-6.500 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '500 Nm / 1.600-4.500 rpm' },
+                        { spec: 'Transmisi', keterangan: '8AT' },
+                        { spec: 'Dimensi', keterangan: '4.379 mm x 1.854 mm x 1.292 mm' },
+                        { spec: 'Berat', keterangan: '1.495 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '52 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '4' }
+                    ],
+                    prices: [
+                        { type: 'GR Supra Sport', value: 'Rp 2.268.000.000' }
+                    ],
+                    images: [
+                        'assets/toyota_supra.png'
+
+                    ]
+                },
+                'hiace': {
+                    name: 'Toyota Hiace',
+                    tagline: 'MPV Komersial Dengan Kapasitas Besar',
+                    description: 'Toyota Hiace adalah MPV komersial yang dirancang untuk mengangkut penumpang dalam jumlah banyak dengan kenyamanan maksimal. Cocok untuk keperluan bisnis travel maupun transportasi perusahaan.',
+                    videoId: 'BS820JApmFQ',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '2.8L Diesel' },
+                        { spec: 'Tenaga Maksimum', keterangan: '178 PS / 3.600 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '420 Nm / 1.400-2.600 rpm' },
+                        { spec: 'Transmisi', keterangan: '6MT/6AT' },
+                        { spec: 'Dimensi', keterangan: '5.915 mm x 1.880 mm x 2.280 mm' },
+                        { spec: 'Berat', keterangan: '2.210 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '70 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '15' }
+                    ],
+                    prices: [
+                        { type: 'Premio 2.8 M/T ', value: 'Rp 673.100.000' }
+                    ],
+                    images: [
+                        'assets/hi_ace.png' 
+  
+                    ]
+                },
+                'new-agya': {
+                    name: 'New Agya',
+                    tagline: 'Hatchback Kompak Untuk Mobilitas Urban',
+                    description: 'New Agya adalah hatchback kompak yang dirancang untuk mobilitas urban dengan harga terjangkau. Dengan desain yang sporty dan konsumsi bahan bakar yang efisien, Agya adalah pilihan tepat untuk mobil pertama.',
+                    videoId: 'vtwwxxJvZoI',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.2L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '88 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '108 Nm / 4.200 rpm' },
+                        { spec: 'Transmisi', keterangan: '5MT/4AT' },
+                        { spec: 'Dimensi', keterangan: '3.660 mm x 1.600 mm x 1.520 mm' },
+                        { spec: 'Berat', keterangan: '930 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '33 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: '1.2 G M/T', value: 'Rp 170.000.000' },
+                        { type: '1.2 G A/T', value: 'Rp 180.000.000' }
+                    ],
+                    images: [
+                        'assets/New_Agya.png', 
+
+                    ]
+                },
+                'all-new-raize': {
+                    name: 'All New Raize',
+                    tagline: 'SUV Kompak Dengan Teknologi Hybrid',
+                    description: 'All New Raize adalah SUV kompak yang dilengkapi dengan teknologi hybrid untuk efisiensi bahan bakar yang lebih baik. Dengan desain yang modern dan fitur canggih, Raize siap menemani petualangan urban Anda.',
+                    videoId: 'sVn3BbF3gm0',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.0L Turbo Hybrid' },
+                        { spec: 'Tenaga Maksimum', keterangan: '98 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '140 Nm / 2.400-4.000 rpm' },
+                        { spec: 'Transmisi', keterangan: 'CVT' },
+                        { spec: 'Dimensi', keterangan: '4.030 mm x 1.710 mm x 1.635 mm' },
+                        { spec: 'Berat', keterangan: '1.080 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '36 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '5' }
+                    ],
+                    prices: [
+                        { type: '1.0T G CVT', value: 'Rp 265.000.000' },
+                        { type: '1.0T GR CVT', value: 'Rp 295.000.000' }
+                    ],
+                    images: [
+                        'assets/raize.png', 
+                    ]
+                },
+                'new-calya': {
+                    name: 'New Calya',
+                    tagline: 'MPV Kompak Untuk Keluarga',
+                    description: 'New Calya adalah MPV kompak yang dirancang untuk keluarga Indonesia dengan harga terjangkau. Dengan kabin yang luas dan konsumsi bahan bakar yang efisien, Calya adalah pilihan tepat untuk mobil keluarga.',
+                    videoId: 'IsQaOQ9N91w',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.2L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '88 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '108 Nm / 4.200 rpm' },
+                        { spec: 'Transmisi', keterangan: '5MT/4AT' },
+                        { spec: 'Dimensi', keterangan: '4.070 mm x 1.655 mm x 1.600 mm' },
+                        { spec: 'Berat', keterangan: '1.030 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '36 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '1.2 E M/T', value: 'Rp 167.000.000' },
+                        { type: '1.2 G A/T', value: 'Rp 185.000.000' }
+                    ],
+                    images: [
+                        'assets/New_Calya.png'
+                    ]
+                },
+                'new-fortuner': {
+                    name: 'New Fortuner',
+                    tagline: 'SUV Tangguh Untuk Segala Medan',
+                    description: 'New Fortuner adalah SUV tangguh dengan desain maskulin dan performa off-road yang handal. Dilengkapi dengan fitur keselamatan canggih dan kabin yang luas, Fortuner siap menaklukkan segala medan.',
+                    videoId: 'vPMA36r669s',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '2.4L/2.8L Diesel' },
+                        { spec: 'Tenaga Maksimum', keterangan: '174 PS / 3.400 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '450 Nm / 1.600-2.000 rpm' },
+                        { spec: 'Transmisi', keterangan: '6AT' },
+                        { spec: 'Dimensi', keterangan: '4.795 mm x 1.855 mm x 1.835 mm' },
+                        { spec: 'Berat', keterangan: '2.105 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '80 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '2.4 G 4x2 A/T', value: 'Rp 555.000.000' },
+                        { type: '2.4 VRZ 4x4 A/T', value: 'Rp 625.000.000' },
+                        { type: '2.8 SRZ 4x2 A/T', value: 'Rp 695.000.000' }
+                    ],
+                    images: [
+                        'assets/toyota fortuner.png'
+                    ]
+                },
+                'new-rush': {
+                    name: 'New Rush',
+                    tagline: 'SUV Tangguh Untuk Segala Medan',
+                    description: 'New Rush adalah SUV tangguh dengan desain maskulin dan performa off-road yang handal. Dilengkapi dengan fitur keselamatan canggih dan kabin yang luas, Rush siap menaklukkan segala medan.',
+                    videoId: '-bIZb8Wopw4',
+                    specs: [
+                        { spec: 'Mesin', keterangan: '1.5L Bensin' },
+                        { spec: 'Tenaga Maksimum', keterangan: '104 PS / 6.000 rpm' },
+                        { spec: 'Torsi Maksimum', keterangan: '136 Nm / 4.200 rpm' },
+                        { spec: 'Transmisi', keterangan: '5MT/4AT' },
+                        { spec: 'Dimensi', keterangan: '4.435 mm x 1.695 mm x 1.705 mm' },
+                        { spec: 'Berat', keterangan: '1.250 kg' },
+                        { spec: 'Kapasitas Tangki', keterangan: '45 L' },
+                        { spec: 'Jumlah Kursi', keterangan: '7' }
+                    ],
+                    prices: [
+                        { type: '1.5 G M/T', value: 'Rp 285.000.000' },
+                        { type: '1.5 G A/T', value: 'Rp 298.000.000' },
+                        { type: '1.5 TRD Sportivo A/T', value: 'Rp 315.000.000' }
+                    ],
+                    images: [
+                        'assets/rush.png'
+                    ]
+                }
+            };
+            
+            // Dapatkan data mobil berdasarkan tipe
+            const currentCar = carData[carType] || carData['new-calya']; // Default ke Calya jika tidak ditemukan
+            
+            // Update konten halaman
+            document.querySelector('title').textContent = `Detail Mobil - ${currentCar.name}`;
+            document.getElementById('carName').textContent = currentCar.name;
+            document.getElementById('carTitle').textContent = `Toyota ${currentCar.name}`;
+            document.getElementById('carTagline').textContent = currentCar.tagline;
+            
+            // Update deskripsi
+            document.getElementById('carDescription1').textContent = currentCar.description;
+            
+            // Update gambar tunggal
+            const singleImageContainer = document.getElementById('singleImageContainer');
+            singleImageContainer.innerHTML = ''; // Kosongkan kontainer
+            
+            // Buat elemen gambar tunggal
+            const image = document.createElement('img');
+            image.src = currentCar.images[0]; // Gunakan hanya gambar pertama
+            image.alt = `${currentCar.name}`;
+            image.className = 'single-image';
+            singleImageContainer.appendChild(image);
+            
+            // Update spesifikasi untuk tabel
+            const specTableBody = document.getElementById('specTableBody');
+            specTableBody.innerHTML = '';
+            currentCar.specs.forEach(spec => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${spec.spec}</td>
+                    <td>${spec.keterangan}</td>
+                `;
+                specTableBody.appendChild(row);
+            });
+            
+            // Update spesifikasi untuk kartu (tampilan mobile)
+            const specCards = document.getElementById('specCards');
+            specCards.innerHTML = '';
+            currentCar.specs.forEach(spec => {
+                const card = document.createElement('div');
+                card.className = 'spec-card';
+                card.innerHTML = `
+                    <div class="spec-card-title">${spec.spec}</div>
+                    <div class="spec-card-value">${spec.keterangan}</div>
+                `;
+                specCards.appendChild(card);
+            });
+            
+            // Update harga
+            const priceAvailability = document.getElementById('priceAvailability');
+            const priceTableBody = document.getElementById('priceTableBody');
+            
+            priceAvailability.textContent = `Tersedia ${currentCar.prices.length} Type`;
+            priceTableBody.innerHTML = '';
+            
+            currentCar.prices.forEach(price => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="type-column">${price.type}</td>
+                    <td class="price-column">${price.value}</td>
+                    <td class="action-column">
+                        <i class="fab fa-whatsapp chat-icon" title="Chat via WhatsApp"></i>
+                    </td>
+                `;
+                priceTableBody.appendChild(row);
+            });
+            
+            // Update video
+            const carVideo = document.getElementById('carVideo');
+            carVideo.src = `https://www.youtube.com/embed/${currentCar.videoId}`;
+            carVideo.title = `Toyota ${currentCar.name} Video`;
+            
+            // Tambahkan event listener untuk chat icon
+            document.querySelectorAll('.chat-icon').forEach(icon => {
+                icon.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const type = row.querySelector('.type-column').textContent.trim();
+                    const price = row.querySelector('.price-column').textContent.trim();
+                    const carName = currentCar.name;
+                    const message = `Halo, saya tertarik dengan mobil ${carName} tipe ${type} dengan harga ${price}. Mohon info lebih lanjut.`;
+                    const encodedMessage = encodeURIComponent(message);
+                    const waNumber = '6285183361023';
+                    const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+                    window.open(waUrl, '_blank');
+                });
+            });
+            
+            // Tambahkan event listener untuk gambar tunggal
+            document.querySelector('.single-image').addEventListener('click', function() {
+                window.location.href = 'model.html';
+            });
+        });
+    </script>
+</body>
+</html>

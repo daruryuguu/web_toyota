@@ -1,0 +1,3801 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealer Toyota Jakarta - Official Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS yang sudah ada */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Top Bar */
+        .top-bar {
+            background: #f8f9fa;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .contact-info span {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .social-icons .facebook { background: #3b5998; }
+        .social-icons .instagram { background: #e4405f; }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .search-bar input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .search-bar select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .search-bar button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Header */
+        header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .logo-icon img {
+            width: 48px;
+            height: 48px;
+        }
+        .logo-text {
+            font-weight: bold;
+        }
+        .logo-text .main {
+            font-size: 24px;
+            color: #333;
+        }
+        .logo-text .sub {
+            font-size: 16px;
+            color: #666;
+        }
+        .main-nav {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .main-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            padding: 10px 0;
+        }
+        .main-nav a:hover {
+            color: #dc143c;
+        }
+        .dropdown::after {
+            content: '▼';
+            margin-left: 5px;
+            font-size: 10px;
+        }
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1002;
+        }
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Animasi hamburger menjadi X */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* Hero Banner - Perbaikan Responsif */
+        .hero-banner {
+            min-height: 500px;
+            height: auto;
+            background-size: contain;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Slider Styles - Perbaikan Responsif */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .car-item {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: contain !important; /* Mengubah dari cover ke contain */
+            background-position: center !important;
+            background-repeat: no-repeat !important; /* Menambahkan ini agar gambar tidak diulang */
+            position: relative;
+            padding: 20px 0; /* Menambahkan padding untuk memastikan gambar tidak terpotong */
+        }
+        
+        /* Navigasi panah yang lebih responsif */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        /* Indikator yang lebih responsif */
+        .slider-indicators {
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .indicator {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .indicator.active, .indicator:hover {
+            background-color: #dc143c;
+        }
+        
+        /* Dropdown Menu - Perbaikan */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            padding: 10px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            min-width: 200px; /* Diperlebar untuk memastikan teks terlihat jelas */
+        }
+        .dropdown-container:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px; /* Padding yang lebih nyaman */
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease; /* Transisi yang lebih halus */
+        }
+        .dropdown-item:hover {
+            background: #f8f8f8; /* Background yang lebih terang saat hover */
+            color: #dc143c; /* Teks berubah menjadi merah Toyota, bukan putih */
+            font-weight: 500; /* Sedikit lebih tebal untuk penekanan */
+        }
+        .main-content {
+            padding: 40px 0;
+        }
+        .dealer-info {
+            margin-bottom: 40px;
+        }
+        .dealer-info h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .dealer-info h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .dealer-info p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center; /* Membuat tombol kontak berada di tengah secara horizontal */
+        }
+        .contact-btn {
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        .contact-btn.phone { background: #dc143c; }
+        .contact-btn.whatsapp { background: #25d366; }
+        .contact-btn.facebook { background: #3b5998; }
+        .contact-btn.instagram { background: #e4405f; }
+        .hours-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            text-align: center;
+        }
+        .hours-info .clock {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        /* Product Section */
+        .product-section {
+            margin: 60px 0;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .product-carousel {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .product-grid {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 280px;
+            height: 250px; /* Tetap mempertahankan tinggi card yang sebelumnya */
+            flex-shrink: 0;
+            overflow: visible;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-image {
+            height: 150px; /* Tetap mempertahankan tinggi container gambar */
+            display: block;
+            position: relative;
+            overflow: visible; /* Mengubah dari hidden ke visible */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Menghapus background-color: #f8f9fa; */
+        }
+        .product-image img {
+            width: auto; /* Mengubah dari fixed width ke auto */
+            height: 100%; /* Menggunakan tinggi penuh container */
+            max-width: 100%; /* Membatasi lebar maksimum */
+            object-fit: contain; /* Mengganti dari cover menjadi contain agar gambar tidak terpotong */
+            display: block;
+            margin: 0 auto; /* Menambahkan ini untuk memastikan gambar berada di tengah */
+        }
+        .product-info {
+            padding: 15px 15px 35px 15px; /* Mengurangi padding */
+            text-align: center;
+            position: relative;
+            background: white;
+        }
+        .product-brand {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            background: rgba(220, 20, 60, 0.95);
+            color: white;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .product-name {
+            font-size: 16px; /* Mengurangi ukuran font nama produk */
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px; /* Mengurangi margin */
+        }
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6600;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            display: block !important; /* Pastikan selalu tampil */
+            opacity: 1 !important; /* Pastikan tidak transparan */
+            visibility: visible !important; /* Pastikan terlihat */
+        }
+        .price-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px; /* Mengurangi tinggi price bar */
+            background: #dc143c;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 1;
+        }
+        .price-circle {
+            position: absolute;
+            bottom: 5px; /* Menyesuaikan posisi */
+            right: 10px;
+            width: 60px; /* Mengurangi ukuran lingkaran harga */
+            height: 60px; /* Mengurangi ukuran lingkaran harga */
+            background: #dc143c;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+            z-index: 2;
+        }
+        .price-circle .amount {
+            font-size: 16px; /* Mengurangi ukuran font jumlah */
+            line-height: 1;
+        }
+        .price-circle .unit {
+            font-size: 10px; /* Mengurangi ukuran font unit */
+        }
+        /* Promotional Banners */
+        .promo-banners {
+            margin: 40px 0;
+        }
+        .promo-banner {
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 20px;
+        }
+        .banner-racing {
+            background: linear-gradient(45deg, #333, #555);
+        }
+        .banner-rav4 {
+            background: linear-gradient(45deg, #ff6600, #ff8533);
+        }
+        /* Product Grid Section */
+        .product-grid-section {
+            margin: 60px 0;
+        }
+        .product-grid-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        /* Staff Section */
+        .staff-section {
+            margin: 60px 0;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .staff-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .staff-card {
+            text-align: center;
+        }
+         .staff-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px; /* Mengubah dari 50% menjadi 15px untuk sudut melengkung */
+            background: #f0f0f0;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 14px;
+            overflow: hidden;
+            border: 4px solid #dc143c;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek dimensi */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efek transisi saat hover */
+        }
+
+        /* Efek hover untuk gambar staf */
+         .staff-photo:hover {
+            transform: translateY(-5px); /* Efek mengangkat saat hover */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15); /* Bayangan lebih tebal saat hover */
+        }   
+        .staff-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .staff-position {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .staff-contact {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .staff-contact a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        /* Floating Konsultasi Button */
+        .konsultasi-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+        .konsultasi-btn {
+            background: #dc143c;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .konsultasi-btn:hover {
+            transform: translateY(-2px);
+        }
+        .konsultasi-badge {
+            background: #ff6600;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .mobile-menu-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+        .mobile-menu-close {
+            display: none !important; /* Menyembunyikan tombol close */
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .mobile-menu-nav {
+            padding: 15px 0;
+        }
+        .mobile-menu-item {
+            position: relative;
+        }
+        .mobile-menu-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .mobile-menu-link:hover {
+            color: #dc143c;
+        }
+        .mobile-menu-toggle-icon {
+            transition: transform 0.3s;
+        }
+        .mobile-menu-toggle-icon.active {
+            transform: rotate(180deg);
+        }
+        .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8f9fa;
+        }
+        .mobile-submenu.active {
+            max-height: 500px;
+        }
+        .mobile-submenu-link {
+            display: block;
+            padding: 10px 15px 10px 30px;
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        .mobile-submenu-link:hover {
+            color: #dc143c;
+            background: #f0f0f0;
+        }
+        .mobile-menu-content {
+            padding: 15px;
+            display: none;
+        }
+        .mobile-menu-content.active {
+            display: block;
+        }
+        .mobile-content-section {
+            margin-bottom: 20px;
+        }
+        .mobile-content-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .mobile-content-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .mobile-content-image {
+            width: 100%;
+            height: 150px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+        .mobile-content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .mobile-content-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px;
+            text-align: center;
+        }
+        .mobile-content-card-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 14px;
+        }
+        .mobile-content-card-text {
+            font-size: 12px;
+            color: #666;
+        }
+        .mobile-contact-form {
+            margin-top: 15px;
+        }
+        .mobile-contact-form input,
+        .mobile-contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .mobile-contact-form button {
+            background: #dc143c;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .mobile-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .mobile-gallery-item {
+            height: 100px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 12px;
+        }
+        .mobile-articles-list {
+            margin-top: 10px;
+        }
+        .mobile-article-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .mobile-article-image {
+            width: 80px;
+            height: 80px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 10px;
+        }
+        .mobile-article-content {
+            flex: 1;
+        }
+        .mobile-article-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 14px;
+        }
+        .mobile-article-text {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+        .mobile-article-date {
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        /* Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+        }
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .contact-info {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .search-bar {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+            .search-bar.mobile-search {
+                display: flex;
+                margin: 20px 0;
+                padding: 0 20px;
+                flex-direction: row; /* Tambahkan ini agar sejajar horizontal */
+                align-items: center; /* Tambahkan ini untuk menyelaraskan secara vertikal */
+            }
+            .search-bar.mobile-search input {
+                width: 100%;
+                flex-grow: 1; /* Tambahkan ini agar input mengambil ruang yang tersedia */
+            }
+            .search-bar.mobile-search button {
+                padding: 8px 12px; /* Sesuaikan padding tombol */
+                margin-left: 8px; /* Tambahkan jarak antara input dan tombol */
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .hero-banner {
+                height: 400px;
+            }
+            
+            /* Mobile Responsive Styles for Slider */
+            .slider-container {
+                height: 400px;
+                width: 100%;
+            }
+            
+            .car-item {
+                width: 100%;
+                height: 100%;
+                background-size: contain !important; /* Mengubah dari cover ke contain agar gambar tidak terpotong */
+                background-repeat: no-repeat !important; /* Mencegah pengulangan gambar */
+                background-position: center bottom !important; /* Memposisikan gambar di bagian bawah tengah */
+                padding-bottom: 30px; /* Memberikan ruang ekstra di bagian bawah */
+            }
+            
+            .prev, .next {
+                padding: 10px;
+                font-size: 18px;
+                background-color: rgba(0,0,0,0.5);
+            }
+            
+            .slider-indicators {
+                bottom: 15px;
+            }
+            
+            .indicator {
+                height: 12px;
+                width: 12px;
+                margin: 0 3px;
+            }
+            
+            .dealer-info h1 {
+                font-size: 28px;
+            }
+            .dealer-info h2 {
+                font-size: 24px;
+            }
+            .contact-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hours-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .product-grid-full {
+                grid-template-columns: 1fr;
+            }
+            .promo-banner {
+                font-size: 20px;
+                height: 200px;
+            }
+            .konsultasi-float {
+                left: 20px;
+                bottom: 20px;
+            }
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Perbaikan untuk product image di mobile */
+            .product-image {
+                height: 130px; /* Menyesuaikan tinggi untuk mobile */
+            }
+            
+            .product-image img {
+                height: 100%; /* Menggunakan tinggi penuh container */
+                width: auto; /* Menyesuaikan lebar secara proporsional */
+                max-width: 100%; /* Membatasi lebar maksimum */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-card {
+                min-width: 250px;
+            }
+            
+            /* Mobile Responsive Styles for Slider */
+            .slider-container {
+                height: 350px;
+                width: 100%;
+            }
+            
+            .car-item {
+                width: 100%;
+                height: 100%;
+                background-size: contain !important; /* Mengubah dari cover ke contain agar gambar tidak terpotong */
+                background-repeat: no-repeat !important; /* Mencegah pengulangan gambar */
+                background-position: center bottom !important; /* Memposisikan gambar di bagian bawah tengah */
+                padding-bottom: 40px; /* Memberikan ruang ekstra di bagian bawah untuk layar yang lebih kecil */
+            }
+            
+            .prev, .next {
+                padding: 8px;
+                font-size: 14px;
+                background-color: rgba(0,0,0,0.6);
+            }
+            
+            .slider-indicators {
+                bottom: 10px;
+            }
+            
+            .indicator {
+                height: 10px;
+                width: 10px;
+                margin: 0 2px;
+            }
+            
+            .dealer-info h1 {
+                font-size: 24px;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            
+            /* Perbaikan untuk product image di mobile yang lebih kecil */
+            .product-image {
+                height: 120px; /* Menyesuaikan tinggi untuk mobile yang lebih kecil */
+            }
+            
+            .product-image img {
+                height: 100%; /* Menggunakan tinggi penuh container */
+                width: auto; /* Menyesuaikan lebar secara proporsional */
+                max-width: 100%; /* Membatasi lebar maksimum */
+            }
+        }
+        
+        /* Digital Clock Styles */
+        .digital-clock {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #333;
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 80px;
+            text-align: center;
+        }
+        .time-separator {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        
+        /* Location Icon Styles */
+        .location-icon {
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .location-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+        }
+        
+        /* View All Button Styles */
+        .view-all-container {
+            text-align: center;
+            margin: 60px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+         .view-all {
+            text-align: center;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 15px;
+           
+        }
+        .view-all-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #dc143c, #b81030);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        .view-all-btn:hover {
+            background: linear-gradient(135deg, #b81030, #dc143c);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(220, 20, 60, 0.6);
+        }
+        .view-all-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .view-all-btn:hover::before {
+            left: 100%;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4); }
+            50% { box-shadow: 0 8px 35px rgba(220, 20, 60, 0.6); }
+            100% { box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4); }
+        }
+        
+        /* Small Product Card Styles - Untuk bagian PILIH MOBIL TOYOTA UNTUK ANDA! */
+        .small-product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+            height: 200px; /* Tetap mempertahankan tinggi card yang sebelumnya */
+            display: flex;
+            flex-direction: column;
+        }
+        .small-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .small-product-image {
+            height: 120px; /* Tetap mempertahankan tinggi container gambar */
+            position: relative;
+            overflow: visible; /* Mengubah dari hidden ke visible */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Menghapus background-color: #f8f9fa; */
+        }
+        .small-product-image img {
+            width: auto; /* Mengubah dari fixed width ke auto */
+            height: 100%; /* Menggunakan tinggi penuh container */
+            max-width: 100%; /* Membatasi lebar maksimum */
+            object-fit: contain; /* Mengganti dari cover menjadi contain agar gambar tidak terpotong */
+            transition: transform 0.5s;
+            margin: 0 auto; /* Menambahkan ini untuk memastikan gambar berada di tengah */
+        }
+        .small-product-card:hover .small-product-image img {
+            transform: scale(1.05);
+        }
+        .small-product-info {
+            padding: 10px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .small-product-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .small-product-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 5px;
+        }
+        .small-product-price {
+            font-weight: bold;
+            color: #dc143c;
+            font-size: 14px;
+        }
+        .small-product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff6600;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        /* FAQ Section Styles */
+        .faq-section {
+            margin: 60px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .faq-question.active {
+            background-color: #dc143c;
+            color: white;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #dc143c;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+            color: white;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: white;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .faq-answer ul, .faq-answer ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .faq-answer strong {
+            color: #333;
+        }
+        
+        /* Responsive Design for FAQ */
+        @media (max-width: 768px) {
+            .faq-question {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .faq-answer.active {
+                padding: 15px;
+            }
+            
+            .faq-answer p, .faq-answer ul, .faq-answer ol {
+                font-size: 14px;
+            }
+            
+            /* Perbaikan untuk small product image di mobile */
+            .small-product-image {
+                height: 100px; /* Menyesuaikan tinggi untuk mobile */
+            }
+            
+            .small-product-image img {
+                height: 100%; /* Menggunakan tinggi penuh container */
+                width: auto; /* Menyesuaikan lebar secara proporsional */
+                max-width: 100%; /* Membatasi lebar maksimum */
+            }
+        }
+        
+        /* CSS untuk menyoroti card mobil dengan border merah */
+        .product-card.highlighted,
+        .small-product-card.highlighted {
+            border: 3px solid #dc143c;
+            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            animation: pulse-highlight 2s infinite;
+        }
+        @keyframes pulse-highlight {
+            0% {
+                box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(220, 20, 60, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            }
+        }
+        /* CSS untuk pesan pencarian */
+        .search-message {
+            background-color: #f8f9fa;
+            border-left: 4px solid #dc143c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .search-message.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        .search-message h3 {
+            margin-top: 0;
+            color: #dc143c;
+        }
+        .search-message p {
+            margin-bottom: 0;
+        }
+        .search-message.error {
+            background-color: #fff8f8;
+            border-left-color: #ff6600;
+        }
+        .search-message.error h3 {
+            color: #ff6600;
+        }
+        .search-message.error button {
+            background: #ff6600;
+            margin-top: 15px;
+            padding: 8px 15px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .search-message.error button:hover {
+            background: #e55500;
+        }
+        
+        /* Customer Gallery Styles */
+        .customer-gallery-section {
+            margin: 60px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .customer-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .customer-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .customer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .customer-photo {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .customer-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .customer-card:hover .customer-photo img {
+            transform: scale(1.05);
+        }
+        
+        .customer-info {
+            padding: 20px;
+            text-align: center;
+            background: white;
+        }
+        
+        .customer-info h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .customer-info p {
+            font-size: 16px;
+            color: #dc143c;
+            font-weight: 500;
+        }
+        
+        .customer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(220, 20, 60, 0.9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        /* Responsive Design for Customer Gallery */
+        @media (max-width: 768px) {
+            .customer-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .customer-photo {
+                height: 200px;
+            }
+            
+            .customer-info h3 {
+                font-size: 16px;
+            }
+            
+            .customer-info p {
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .customer-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        /* Notification container */
+        #customNotification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #dc143c;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.6);
+            display: none;
+            width: 320px;
+            z-index: 1100;
+            font-family: Arial, sans-serif;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+        #customNotification.slideDown {
+            animation-name: slideDown;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #customNotification .icon {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        #customNotification .message {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 16px;
+            margin-right: 10px;
+            max-width: 180px;
+        }
+        #customNotification .btn-suggestion,
+        #customNotification .btn-close {
+            background: white;
+            color: #dc143c;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            vertical-align: middle;
+            transition: background-color 0.3s, color 0.3s;
+            margin-left: 5px;
+        }
+        #customNotification .btn-suggestion:hover {
+            background-color: #b81030;
+            color: white;
+        }
+        #customNotification .btn-close {
+            font-size: 18px;
+            padding: 2px 8px;
+            line-height: 1;
+            margin-left: 10px;
+        }
+        #customNotification .btn-close:hover {
+            background-color: #b81030;
+            color: white;
+        }
+        
+        /* Promo Rundown Styles */
+        .promo-rundown {
+            margin: 60px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .promo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .promo-header {
+            background: linear-gradient(135deg, #dc143c 0%, #b81030 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promo-header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .promo-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .promo-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .promo-period {
+            background: #fff3e0;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #e65100;
+            border-bottom: 2px dashed #ffcc80;
+        }
+        
+        .rundown-container {
+            padding: 40px 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #dc143c, #ff9800);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-left: 5px solid #dc143c;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            border-left: none;
+            border-right: 5px solid #dc143c;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 60px;
+            height: 60px;
+            background: #dc143c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+            z-index: 2;
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #757575;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .timeline-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #212121;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-description {
+            color: #616161;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .promo-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #212121 0%, #424242 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            background: #dc143c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #b81030;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(184, 16, 48, 0.3);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: white;
+            color: #212121;
+        }
+        
+        .promo-footer {
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            color: #757575;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item, .timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+            }
+            
+            .timeline-icon {
+                left: 30px;
+            }
+            
+            .promo-header h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Perbaikan untuk small product image di mobile yang lebih kecil */
+        @media (max-width: 480px) {
+            .small-product-image {
+                height: 90px; /* Menyesuaikan tinggi untuk mobile yang lebih kecil */
+            }
+            
+            .small-product-image img {
+                height: 100%; /* Menggunakan tinggi penuh container */
+                width: auto; /* Menyesuaikan lebar secara proporsional */
+                max-width: 100%; /* Membatasi lebar maksimum */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Container -->
+    <div id="customNotification" role="alert" aria-live="assertive" aria-atomic="true">
+        <i class="fas fa-exclamation-triangle icon" aria-hidden="true"></i>
+        <span class="message"></span>
+        <button class="btn-suggestion" type="button">Saran Mobil Alternatif</button>
+        <button class="btn-close" type="button" aria-label="Tutup Notifikasi">&times;</button>
+    </div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/Toyota_Logo.png" alt="Toyota" style="width: 50px; height: auto;">
+                    <div class="logo-text">
+                        <div class="main">LET'S GO</div>
+                        <div class="sub">BEYOND</div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <span><i class="fas fa-envelope"></i> raihancendekia@gmail.com</span>
+                    <span><i class="fas fa-clock"></i> <span id="currentTime" class="digital-clock">11:01:25</span></span>
+                </div>
+                <div class="social-icons">
+                    <a href="https://web.facebook.com/people/Rei-Toyota-Jatinegara/61577938539706/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/reitoyotajakarta?igsh=MXBvZXJsdHNma2hqag==" class="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <!-- Search bar untuk mobile -->
+                <div class="search-bar mobile-search">
+                    <input type="text" placeholder="Cari mobil Toyota.." id="mobileSearchInput">
+                    <button id="mobileSearchButton"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="searchMessage" class="search-message error" style="display: none;">
+                    <h3>Mobil Tidak Ditemukan</h3>
+                    <p>mobil yang anda cari tidak tersedia</p>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Toggle - Pindahkan ke sini -->
+        <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content"> 
+                <!-- Mengubah logo T menjadi logo lokasi Google Maps yang bisa diklik -->
+                <div class="logo"> 
+<a href="https://share.google/5SAq4PxE0Od6hN0NZ" target="_blank" class="logo-icon location-icon">
+    <img src="assets/maps.png" alt="Maps Icon" style="width: 40px; height: auto;">
+</a>
+                    <div class="logo-text"> 
+                        <div class="main">TOYOTA</div> 
+                        <div class="sub">PT. TUNAS RIDEAN </div> 
+                    </div> 
+                </div>
+                <nav>
+                    <ul class="main-nav">
+                        <li><a href="#home">HOME</a></li>
+                        <li class="dropdown-container">
+                            <a href="#suv" class="dropdown">SUV</a>
+                            <div class="dropdown-menu">
+                                <a href="#new-yaris-cross" class="dropdown-item">NEW YARIS CROSS</a>
+                                <a href="#rav4-gr-sport-phev" class="dropdown-item">PRIUS 1.8 Hybrid CVT</a>
+                                <a href="#kijang-innova-zenix" class="dropdown-item">KIJANG INNOVA ZENIX</a>
+                                <a href="#new-fortuner" class="dropdown-item">NEW FORTUNER</a>
+                                <a href="#new-rush" class="dropdown-item">NEW RUSH</a>
+                                <a href="#all-new-bz4x" class="dropdown-item">ALL NEW BZ4X</a>
+                                <a href="#corolla-cross" class="dropdown-item">COROLLA CROSS</a>
+                                <a href="#all-new-raize" class="dropdown-item">ALL NEW RAIZE</a>
+                            </div>
+                        </li>
+                        <li class="dropdown-container">
+                            <a href="#hatchback" class="dropdown">HATCHBACK</a>
+                            <div class="dropdown-menu">
+                                <a href="#new-agya" class="dropdown-item">NEW AGYA</a>
+                            </div>
+                        </li>
+                        <li class="dropdown-container">
+                            <a href="#mpv" class="dropdown">MPV</a>
+                            <div class="dropdown-menu">
+                                <a href="#new-alphard" class="dropdown-item">NEW ALPHARD</a>
+                                <a href="#all-new-avanza" class="dropdown-item">ALL NEW AVANZA</a>
+                                <a href="#all-new-veloz" class="dropdown-item">ALL NEW VELOZ</a>
+                                <a href="#all-new-voxy" class="dropdown-item">ALL NEW VOXY</a>
+                                <a href="#all-new-calya" class="dropdown-item">NEW CALYA</a>
+                            </div>
+                        </li>
+                        <li class="dropdown-container">
+                            <a href="#sedan" class="dropdown">SEDAN</a>
+                            <div class="dropdown-menu">
+                                <a href="#new-altis" class="dropdown-item">NEW ALTIS</a>
+                                <a href="#all-new-vios" class="dropdown-item">ALL NEW VIOS</a>
+                                <a href="#new-camry" class="dropdown-item">NEW CAMRY</a>
+                            </div>
+                        </li>
+                      
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="mobile-menu-title">Menu</div>
+            <button class="mobile-menu-close" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-menu-nav">
+            <div class="mobile-menu-item">
+                <a href="#home" class="mobile-menu-link" onclick="showMobileContent('home')">
+                    <span>HOME</span>
+                    <i class="fas fa-chevron-right mobile-menu-toggle-icon"></i>
+                </a>
+                <div class="mobile-menu-content" id="home-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">Selamat Datang di Toyota Jakarta</div>
+                        <div class="mobile-content-text">
+                            Dealer resmi Toyota terpercaya di Jakarta dengan berbagai pilihan mobil terbaru.
+                        </div>
+                        <div class="mobile-content-image">Gambar Dealer</div>
+                        <div class="mobile-content-text">
+                            Kami memberikan segala kemudahan dan kepuasan pelanggan untuk memilih mana varian mobil yang diinginkan. Menjadi prioritas utama kami untuk menciptakan kenyamanan pelanggan.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-menu-item">
+                <a href="#suv" class="mobile-menu-link" onclick="toggleMobileSubmenu('suv-submenu')">
+                    <span>SUV</span>
+                    <i class="fas fa-chevron-down mobile-menu-toggle-icon" id="suv-submenu-icon"></i>
+                </a>
+                <div class="mobile-submenu" id="suv-submenu">
+                    <a href="#new-yaris-cross" class="mobile-submenu-link" onclick="showMobileContent('yaris-cross')">NEW YARIS CROSS</a>
+                    <a href="#rav4-gr-sport-phev" class="mobile-submenu-link" onclick="showMobileContent('rav4')">PRIUS 1.8 Hybrid CVT</a>
+                    <a href="#kijang-innova-zenix" class="mobile-submenu-link" onclick="showMobileContent('innova-zenix')">KIJANG INNOVA ZENIX</a>
+                    <a href="#new-fortuner" class="mobile-submenu-link" onclick="showMobileContent('fortuner')">NEW FORTUNER</a>
+                    <a href="#new-rush" class="mobile-submenu-link" onclick="showMobileContent('rush')">NEW RUSH</a>
+                    <a href="#all-new-bz4x" class="mobile-submenu-link" onclick="showMobileContent('bz4x')">ALL NEW BZ4X</a>
+                    <a href="#corolla-cross" class="mobile-submenu-link" onclick="showMobileContent('corolla-cross')">COROLLA CROSS</a>
+                    <a href="#all-new-raize" class="mobile-submenu-link" onclick="showMobileContent('raize')">ALL NEW RAIZE</a>
+                </div>
+                
+                <div class="mobile-menu-content" id="yaris-cross-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Yaris Cross</div>
+                        <div class="mobile-content-image">Gambar Yaris Cross</div>
+                        <div class="mobile-content-text">
+                            SUV kompak dengan desain stylish dan fitur canggih. Dilengkapi dengan teknologi hybrid untuk efisiensi bahan bakar yang lebih baik.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 353 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.5L Hybrid</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="rav4-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">PRIUS 1.8 Hybrid CVT</div>
+                        <div class="mobile-content-image">Gambar PRIUS</div>
+                        <div class="mobile-content-text">
+                            SUV plug-in hybrid dengan performa sporty dan teknologi terdepan. Menggabungkan efisiensi listrik dengan kekuatan mesin bensin.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 1.15 Miliar</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">2.5L PHEV</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="innova-zenix-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">Kijang Innova Zenix</div>
+                        <div class="mobile-content-image">Gambar Innova Zenix</div>
+                        <div class="mobile-content-text">
+                            MPV premium dengan desain modern dan fitur canggih. Dilengkapi dengan teknologi hybrid untuk kenyamanan dan efisiensi maksimal.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 430 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">2.0L Hybrid</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="fortuner-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Fortuner</div>
+                        <div class="mobile-content-image">Gambar Fortuner</div>
+                        <div class="mobile-content-text">
+                            SUV tangguh dengan desain maskulin dan performa off-road yang handal. Dilengkapi dengan fitur keselamatan canggih dan kabin yang luas.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 555 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">2.4L/2.8L Diesel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="rush-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Rush</div>
+                        <div class="mobile-content-image">Gambar Rush</div>
+                        <div class="mobile-content-text">
+                            SUV kompak dengan desain sporty dan fitur keselamatan lengkap. Ideal untuk keluarga yang aktif dan dinamis.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 280 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.5L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="bz4x-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">All New BZ4X</div>
+                        <div class="mobile-content-image">Gambar BZ4X</div>
+                        <div class="mobile-content-text">
+                            SUV listrik pertama dari Toyota dengan teknologi baterai canggih. Ramah lingkungan dengan jangkauan tempuh hingga 500 km.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 1.19 Miliar</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Baterai</div>
+                                <div class="mobile-content-card-text">71.4 kWh</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="corolla-cross-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">Corolla Cross</div>
+                        <div class="mobile-content-image">Gambar Corolla Cross</div>
+                        <div class="mobile-content-text">
+                            SUV hybrid dengan desain elegan dan fitur keselamatan canggih. Menggabungkan kenyamanan sedan dengan ketangguhan SUV.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 574 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.8L Hybrid</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="raize-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">All New Raize</div>
+                        <div class="mobile-content-image">Gambar Raize</div>
+                        <div class="mobile-content-text">
+                            SUV kompak dengan desain modern dan fitur canggih. Dilengkapi dengan mesin turbo untuk performa yang responsif.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 230 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.0L Turbo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-menu-item">
+                <a href="#hatchback" class="mobile-menu-link" onclick="toggleMobileSubmenu('hatchback-submenu')">
+                    <span>HATCHBACK</span>
+                    <i class="fas fa-chevron-down mobile-menu-toggle-icon" id="hatchback-submenu-icon"></i>
+                </a>
+                <div class="mobile-submenu" id="hatchback-submenu">
+                    <a href="#new-agya" class="mobile-submenu-link" onclick="showMobileContent('agya')">NEW AGYA</a>
+                </div>
+                
+                <div class="mobile-menu-content" id="agya-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Agya</div>
+                        <div class="mobile-content-image">Gambar Agya</div>
+                        <div class="mobile-content-text">
+                            Hatchback kompak dengan desain sporty dan harga terjangkau. Ideal untuk mobilitas urban dengan konsumsi bahan bakar yang efisien.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 170 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.2L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-menu-item">
+                <a href="#mpv" class="mobile-menu-link" onclick="toggleMobileSubmenu('mpv-submenu')">
+                    <span>MPV</span>
+                    <i class="fas fa-chevron-down mobile-menu-toggle-icon" id="mpv-submenu-icon"></i>
+                </a>
+                <div class="mobile-submenu" id="mpv-submenu">
+                    <a href="#new-alphard" class="mobile-submenu-link" onclick="showMobileContent('alphard')">NEW ALPHARD</a>
+                    <a href="#all-new-avanza" class="mobile-submenu-link" onclick="showMobileContent('avanza')">ALL NEW AVANZA</a>
+                    <a href="#all-new-veloz" class="mobile-submenu-link" onclick="showMobileContent('veloz')">ALL NEW VELOZ</a>
+                    <a href="#all-new-voxy" class="mobile-submenu-link" onclick="showMobileContent('voxy')">ALL NEW VOXY</a>
+                    <a href="#all-new-calya" class="mobile-submenu-link" onclick="showMobileContent('calya')">NEW CALYA</a>
+                </div>
+                
+                <div class="mobile-menu-content" id="alphard-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Alphard</div>
+                        <div class="mobile-content-image">Gambar Alphard</div>
+                        <div class="mobile-content-text">
+                            MPV premium mewah dengan kabin yang luas dan fitur canggih. Simbol status dan kenyamanan tertinggi untuk perjalanan Anda.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 1.60 Miliar</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">2.5L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="avanza-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">All New Avanza</div>
+                        <div class="mobile-content-image">Gambar Avanza</div>
+                        <div class="mobile-content-text">
+                            MPV keluarga terlaris dengan desain baru yang lebih modern dan fitur keselamatan yang lengkap.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 233 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.3L/1.5L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="veloz-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">All New Veloz</div>
+                        <div class="mobile-content-image">Gambar Veloz</div>
+                        <div class="mobile-content-text">
+                            Varian sporty dari Avanza dengan desain lebih agresif dan fitur yang lebih lengkap untuk pengalaman berkendara yang menyenangkan.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 292 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.5L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="voxy-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">All New Voxy</div>
+                        <div class="mobile-content-image">Gambar Voxy</div>
+                        <div class="mobile-content-text">
+                            MPV premium dengan pintu geser dan kabin yang luas. Dilengkapi dengan fitur canggih untuk kenyamanan perjalanan keluarga.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 616 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">2.0L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="calya-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Calya</div>
+                        <div class="mobile-content-image">Gambar Calya</div>
+                        <div class="mobile-content-text">
+                            MPV kompak dengan harga terjangkau dan konsumsi bahan bakar yang efisien. Ideal untuk keluarga kecil di perkotaan.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 167 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.2L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-menu-item">
+                <a href="#sedan" class="mobile-menu-link" onclick="toggleMobileSubmenu('sedan-submenu')">
+                    <span>SEDAN</span>
+                    <i class="fas fa-chevron-down mobile-menu-toggle-icon" id="sedan-submenu-icon"></i>
+                </a>
+                <div class="mobile-submenu" id="sedan-submenu">
+                    <a href="#new-altis" class="mobile-submenu-link" onclick="showMobileContent('altis')">NEW ALTIS</a>
+                    <a href="#all-new-vios" class="mobile-submenu-link" onclick="showMobileContent('vios')">ALL NEW VIOS</a>
+                    <a href="#new-camry" class="mobile-submenu-link" onclick="showMobileContent('camry')">NEW CAMRY</a>
+                </div>
+                
+                <div class="mobile-menu-content" id="altis-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Altis</div>
+                        <div class="mobile-content-image">Gambar Altis</div>
+                        <div class="mobile-content-text">
+                            Sedan mid-size dengan desain elegan dan performa yang handal. Dilengkapi dengan fitur keselamatan canggih dan kabin yang nyaman.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 530 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.8L Hybrid</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="vios-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">All New Vios</div>
+                        <div class="mobile-content-image">Gambar Vios</div>
+                        <div class="mobile-content-text">
+                            Sedan kompak dengan desain sporty dan fitur modern. Ideal untuk mobilitas urban dengan konsumsi bahan bakar yang efisien.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 310 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">1.5L Bensin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-content" id="camry-content">
+                    <div class="mobile-content-section">
+                        <div class="mobile-content-title">New Camry</div>
+                        <div class="mobile-content-image">Gambar Camry</div>
+                        <div class="mobile-content-text">
+                            Sedan premium mewah dengan performa yang halus dan fitur canggih. Simbol status dan kenyamanan tertinggi di kelasnya.
+                        </div>
+                        <div class="mobile-content-grid">
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Harga Mulai</div>
+                                <div class="mobile-content-card-text">Rp 809 Juta</div>
+                            </div>
+                            <div class="mobile-content-card">
+                                <div class="mobile-content-card-title">Mesin</div>
+                                <div class="mobile-content-card-text">2.5L Hybrid</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Banner -->
+    <section class="hero-banner" id="home">
+        <div class="slider-container">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <div class="car-item" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://d1g6w7sntckt92.cloudfront.net/public/images/banner_images/uKhtw3YDN943F7Si9PMztUOgsXCET2uCVC6YfTbO.webp'); background-size: contain !important; background-position: center !important; background-repeat: no-repeat !important; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; color: white; padding: 20px;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="car-item" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://d1g6w7sntckt92.cloudfront.net/public/images/banner_images/oMGq5h1kXex0owPJLjsNYJKgUGC1Nv2jcuivvWiq.webp'); background-size: contain !important; background-position: center !important; background-repeat: no-repeat !important; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; color: white; padding: 20px;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="car-item" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/yarisbg.jpg'); background-size: contain !important; background-position: center !important; background-repeat: no-repeat !important; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; color: white; padding: 20px;">
+                    </div>
+                </div>
+            </div>
+             <!-- Slide 4 -->
+               <div class="slide">
+                <div class="car-item" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://d1g6w7sntckt92.cloudfront.net/public/images/banner_images/BERLhlzLVQAXcHOz5Qge7Txfe7Jj2Zo6WyZfKsbC.webp'); background-size: contain !important; background-position: center !important; background-repeat: no-repeat !important; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; color: white; padding: 20px;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation arrows -->
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            
+            <!-- Indicators -->
+            <div class="slider-indicators">
+                <span class="indicator active" onclick="currentSlide(1)"></span>
+                <span class="indicator" onclick="currentSlide(2)"></span>
+                <span class="indicator" onclick="currentSlide(3)"></span>
+                <span class="indicator" onclick="currentSlide(4)"></span>
+            </div>
+        </div>
+    </section>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Dealer Info Section -->
+            <section class="dealer-info fade-in">
+                <h1><center>Dealer Toyota Jakarta Timur </center></h1>
+                <p><b><center>PT. TUNAS RIDEAN JAKARTA TIMUR</center></b></p>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/6285183361023" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://web.facebook.com/people/Rei-Toyota-Jatinegara/61577938539706/" class="contact-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/raycendekia?igsh=MTF1OHZsbXNjaW1taw==" class="contact-btn instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="hours-info">
+                    <div class="clock"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <strong>Senin - Sabtu</strong><br>
+                        <span>08.00 - 17.00 WIB</span>
+                    </div>
+                </div>
+            </section>
+            <!-- Featured Products Carousel -->
+                <h1><center>Harga Promo ! </center></h1>
+            <section class="product-section">
+                <div class="product-carousel">
+                    <div class="product-grid">
+                        
+                        <div class="product-card">
+                            <div class="product-badge">PROMO</div>
+                        <div class="product-image"><img src="assets/toyota fortuner.png" alt="Corolla Cross"></div>
+                        <div class="product-info">
+                            <div class="product-name">Corolla Cross</div>
+                            <div class="product-brand">🚗 TOYOTA</div>
+                            <div class="price-bar"></div>
+                            <div class="price-circle">
+                                <div class="amount">574</div>
+                                <div class="unit">JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-badge">PROMO</div>
+                        <div class="product-image"><img src="assets/innova_zenix.png" alt="Kijang Innova Zenix"></div>
+                        <div class="product-info">
+                            <div class="product-name">Kijang Innova Zenix</div>
+                            <div class="product-brand">🚗 TOYOTA</div>
+                            <div class="price-bar"></div>
+                            <div class="price-circle">
+                                <div class="amount">430</div>
+                                <div class="unit">JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-badge">PROMO</div>
+                        <div class="product-image"><img src="assets/all_new_veloz.png" alt="All New Veloz"></div>
+                        <div class="product-info">
+                            <div class="product-name">All New Veloz</div>
+                            <div class="product-brand">🚗 TOYOTA</div>
+                            <div class="price-bar"></div>
+                            <div class="price-circle">
+                                <div class="amount">292</div>
+                                <div class="unit">JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="assets/toyota alphard.png" alt="New Alphard"></div>
+                        <div class="product-info">
+                            <div class="product-name">New Alphard</div>
+                            <div class="product-brand">🚗 TOYOTA</div>
+                            <div class="price-bar"></div>
+                            <div class="price-circle">
+                                <div class="amount">1.60</div>
+                                <div class="unit">MILYAR</div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Staff Section -->
+            <section class="staff-section">
+                <h2 class="staff-title">Tim Sales Kami</h2>
+                <div class="staff-grid">
+                
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <img src="assets/perdi.png" alt="Sales Person 2" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="staff-name">Muhammad Raihan Cendekia</div>
+                        <div class="staff-position">Sales Executive</div>
+                        <div class="staff-contact">
+               
+                        </div>
+                    </div>
+                   
+                </div>
+            </section>
+            
+            <!-- Official Website Section -->
+            <section class="dealer-info">
+                <center><h2>Official Website Toyota Jakarta Timur</h2></center>
+                <p><strong style="color: #dc143c;">Toyota Jakarta Timur</strong>, kami memberikan segala kemudahan dan kepuasan pelanggan untuk memilih mana varian mobil yang diinginkan. Menjadi prioritas utama kami untuk menciptakan kenyamanan pelanggan.</p>
+            </section>
+             <!-- Promo Rundown Section -->
+            <section class="promo-rundown">
+                <div class="promo-container">
+                    <div class="promo-header">
+                        <h1>TOYOTA GREAT SALE 2025</h1>
+                        <p>Penawaran Terbaik Sepanjang Tahun!</p>
+                    </div>
+                    
+                    <div class="promo-period">
+                        <i class="fas fa-calendar-alt"></i> Periode Promo: 1 November - 31 Desember 2023
+                    </div>
+                    
+                    <div class="rundown-container">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">1 - 15 November</div>
+                                    <div class="timeline-title">Early Bird Special</div>
+                                    <div class="timeline-description">
+                                        Dapatkan diskon hingga 25 juta untuk pembelian semua tipe mobil Toyota selama periode awal promo. Bonus aksesoris senilai 5 juta!
+                                    </div>
+                                    <div>
+                                        <span class="promo-badge">Diskon 25 Juta</span>
+                                        <span class="promo-badge">Gratis Aksesoris</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">16 - 30 November</div>
+                                    <div class="timeline-title">Weekend Madness</div>
+                                    <div class="timeline-description">
+                                        Setiap akhir pekan, dapatkan cashback 10 juta + cicilan 0% hingga 3 tahun untuk pembelian Avanza, Rush, dan Innova.
+                                    </div>
+                                    <div>
+                                        <span class="promo-badge">Cashback 10 Juta</span>
+                                        <span class="promo-badge">Cicilan 0%</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-icon">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">1 - 15 Desember</div>
+                                    <div class="timeline-title">Year End Bonus</div>
+                                    <div class="timeline-description">
+                                        Paket servis gratis 4 tahun + asuransi all risk 1 tahun untuk pembelian Fortuner, Pajero, dan Alphard.
+                                    </div>
+                                    <div>
+                                        <span class="promo-badge">Servis 4 Tahun</span>
+                                        <span class="promo-badge">Asuransi Gratis</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-icon">
+                                    <i class="fas fa-gift"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">16 - 31 Desember</div>
+                                    <div class="timeline-title">Closing Sale</div>
+                                    <div class="timeline-description">
+                                        Diskon akhir tahun hingga 30 juta + lucky draw dengan hadiah utama mobil Toyota Agya untuk 10 pembeli beruntung!
+                                    </div>
+                                    <div>
+                                        <span class="promo-badge">Diskon 30 Juta</span>
+                                        <span class="promo-badge">Lucky Draw</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-section">
+                        <h2>Jangan Lewatkan Kesempatan Ini!</h2>
+                        <p>Hubungi kami sekarang dan dapatkan penawaran terbaik</p>
+                        <br>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/6285183361023" class="cta-button">
+                                <i class="fas fa-phone"></i> Hubungi Kami
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="promo-footer">
+                        <p>&copy; 2025 Toyota Indonesia. Syarat dan ketentuan berlaku. Harga dapat berubah sewaktu-waktu.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Product Grid Section -->
+            <section class="product-grid-section">
+                <h2 class="section-title">PILIH MOBIL TOYOTA UNTUK ANDA!</h2>
+                <div class="product-grid-full">
+                    <div class="small-product-card">
+                        <div class="small-product-badge">PROMO</div>
+                        <div class="small-product-image"><img src="assets/corolla_cross.png" alt="Corolla Cross"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">Corolla Cross</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">574 JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-badge">PROMO</div>
+                        <div class="small-product-image"><img src="assets/innova_zenix.png" alt="Kijang Innova Zenix"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">Kijang Innova Zenix</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">430 JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-badge">PROMO</div>
+                        <div class="small-product-image"><img src="assets/all_new_veloz.png" alt="All New Veloz"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">All New Veloz</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">292 JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-image"><img src="assets/toyota alphard.png" alt="New Alphard"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">New Alphard</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">1.60 MILYAR</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-badge">PROMO</div>
+                        <div class="small-product-image"><img src="assets/All_New_BZ4X.png" alt="All New BZ4X"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">All New BZ4X</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">1.19 MILYAR</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-image"><img src="assets/all_new_yaris_cross_hev.png" alt="New Yaris Cross"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">New Yaris Cross</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">353 JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-image"><img src="assets/New_Agya.png" alt="New Agya"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">New Agya</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">170 JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-badge">PROMO</div>
+                        <div class="small-product-image"><img src="assets/toyota fortuner.png" alt="Toyota Fortuner"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">New Fortuner</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">555 JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-product-card">
+                        <div class="small-product-image"><img src="assets/New_Calya.png" alt="New Calya"></div>
+                        <div class="small-product-info">
+                            <div class="small-product-name">New Calya</div>
+                            <div class="small-product-footer">
+                                <div class="small-product-price">167 JUTAAN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Menghapus satu mobil agar hanya tampil 9 mobil saja -->
+                </div>
+                
+                 <div class="view-all">
+                    <a href="model.html" class="view-all-btn">LIHAT SEMUA</a>
+                </div>
+            </section>
+            
+            <!-- Customer Gallery Section -->
+            <section class="customer-gallery-section">
+                <h2 class="section-title">GALERI PELANGGAN SETIA TOYOTA</h2>
+                <p class="gallery-description">Pelanggan kami yang telah mempercayai kami untuk mobil impian mereka</p>
+                
+                <div class="customer-gallery">
+                    <div class="customer-card">
+                        <div class="customer-photo">
+                            <img src="assets/deal1.jpg" alt="Customer 1">
+                        </div>
+                        <div class="customer-info">
+                            <h3>Budi Santoso</h3>
+                            <p>Toyota Fortuner</p>
+                        </div>
+                        <div class="customer-badge"> DEAL </div>
+                    </div>
+                    
+                    <div class="customer-card">
+                        <div class="customer-photo">
+                            <img src="assets/deal2.jpg" alt="Customer 2">
+                        </div>
+                        <div class="customer-info">
+                            <h3>Atthaya Vivaldi Muljono</h3>
+                            <p>Toyota Alphard</p>
+                        </div>
+                        <div class="customer-badge"> DEAL </div>
+                    </div>
+                    
+                    <div class="customer-card">
+                        <div class="customer-photo">
+                            <img src="assets/deal3.jpg" alt="Customer 3">
+                        </div>
+                        <div class="customer-info">
+                            <h3>Ahmad Fauzi</h3>
+                            <p>Toyota Innova Zenix</p>
+                        </div>
+                        <div class="customer-badge"> DEAL </div>
+                    </div>
+                    
+                    <div class="customer-card">
+                        <div class="customer-photo">
+                            <img src="assets/deal4.jpg" alt="Customer 4">
+                        </div>
+                        <div class="customer-info">
+                            <h3>Mas Adam</h3>
+                            <p>Toyota Veloz</p>
+                        </div>
+                        <div class="customer-badge"> DEAL </div>
+                    </div>
+                    
+                    <div class="customer-card">
+                        <div class="customer-photo">
+                            <img src="assets/deal5.jpg" alt="Customer 5">
+                        </div>
+                        <div class="customer-info">
+                            <h3>Eko Prasetyo</h3>
+                            <p>Toyota Yaris Cross</p>
+                        </div>
+                        <div class="customer-badge"> DEAL </div>
+                    </div>
+                    
+                    <div class="customer-card">
+                        <div class="customer-photo">
+                            <img src="assets/deal6.jpg" alt="Customer 6">
+                        </div>
+                        <div class="customer-info">
+                            <h3>DJOKO</h3>
+                            <p>Toyota Corolla Cross</p>
+                        </div>
+                        <div class="customer-badge"> DEAL </div>
+                    </div>
+                </div>
+            </section>
+            
+           
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 class="section-title">PERTANYAAN YANG SERING DIAJUKAN</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Apa saja metode pembayaran yang tersedia di dealer Toyota Jakarta Timur?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Kami menyediakan berbagai metode pembayaran untuk kenyamanan Anda, antara lain:</p>
+                            <ul>
+                                <li>Pembayaran tunai/cash</li>
+                                <li>Kredit melalui leasing rekanan (ADIRA, BCA Finance, Mandiri Tunas Finance, dll)</li>
+                                <li>Trade-in/tukar tambah mobil lama Anda</li>
+                                <li>Pembayaran dengan cicilan kartu kredit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Apakah ada program promo atau diskon saat ini?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ya, kami selalu memiliki promo menarik setiap bulannya. Promo saat ini meliputi:</p>
+                            <ul>
+                                <li>Diskon khusus untuk pembelian tunai</li>
+                                <li>Bunga rendah mulai dari 3.5% untuk pembelian kredit</li>
+                                <li>Gratis asuransi selama 1 tahun</li>
+                                <li>Gratis biaya administrasi dan provisi</li>
+                                <li>Paket servis dan suku cadang gratis</li>
+                            </ul>
+                            <p>Untuk informasi promo terlengkap, silakan hubungi sales kami melalui WhatsApp atau telepon.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Bagaimana proses test drive mobil Toyota?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Proses test drive di dealer kami sangat mudah:</p>
+                            <ol>
+                                <li>Hubungi kami untuk membuat janji test drive</li>
+                                <li>Pilih mobil Toyota yang ingin Anda coba</li>
+                                <li>Tentukan waktu dan lokasi yang nyaman untuk Anda (bisa di dealer atau lokasi lain yang disepakati)</li>
+                                <li>Siapkan SIM A yang masih berlaku</li>
+                                <li>Tim kami akan membawa mobil test drive ke lokasi yang disepakati</li>
+                                <li>Nikmati pengalaman mengemudi mobil Toyota impian Anda</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Apa saja keuntungan membeli mobil di dealer resmi Toyota?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Banyak keuntungan yang Anda dapatkan dengan membeli mobil di dealer resmi Toyota:</p>
+                            <ul>
+                                <li>Garansi resmi Toyota hingga 3 tahun/100.000 km</li>
+                                <li>Jaminan suku cadang asli dan teknisi terlatih</li>
+                                <li>Layanan purna jual yang luas di seluruh Indonesia</li>
+                                <li>Program Toyota Home Service (THS)</li>
+                                <li>Nilai jual kembali yang lebih stabil</li>
+                                <li>Kemudahan proses perpanjangan garansi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Bagaimana cara melakukan servis berkala di dealer Toyota Jakarta Timur?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Kami menyediakan beberapa cara untuk melakukan servis berkala:</p>
+                            <ul>
+                                <li><strong>B datang langsung ke bengkel kami</strong> di Jl. Jatinegara Timur Jalan No.55, RT.11/RW.3, Bali Mester, Kecamatan Jatinegara, Jakarta Timur</li>
+                                <li><strong>Melalui aplikasi Toyota</strong> - buat janji temu melalui aplikasi resmi Toyota</li>
+                                <li><strong>Toyota Home Service (THS)</strong> - teknisi kami akan datang ke lokasi Anda untuk servis ringan</li>
+                                <li><strong>Booking online</strong> melalui website resmi kami</li>
+                                <li><strong>Hubungi langsung</strong> melalui telepon atau WhatsApp kami</li>
+                            </ul>
+                        </div>   
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Apabila data BI Checking kurang baik, dan ingin pengajuan kredit untuk pembelian unit di Toyota Jakarta Timur masih dapat diproses?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sangat bisa  tetapi dengan syarat dan ketentuan.</p>
+                            <ul>
+                                <li><strong>Uang Muka (DP) Lebih Besar</strong> Biasanya pihak leasing akan meminta DP yang lebih tinggi dibandingkan dengan pemohon yang memiliki riwayat kredit baik. hal ini untuk mengurangi resiko bagi pihak pembiayaan</li>
+                                <li><strong>Dokumen Tambahan</strong> - Pemohon mungkin diminta melampirkan dokumen pendukung tambahan, seperti slip gaji terbaru, rekening koran beberapa bulan terakhir, atau surat keterangan kerja.</li>
+                                <li><strong>Penjamin (Guarantor)</strong> - Dalam beberapa kasus, leasing bisa meminta penjamin (orang dengan BI Checking yang baik) untuk ikut menandatangani perjanjian kredit.</li>
+                            </ul>
+                        </div>   
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Floating Konsultasi Button -->
+    <div class="konsultasi-float">
+        <a href="https://wa.me/6285183361023" class="konsultasi-btn">
+            <i class="fab fa-whatsapp"></i> Konsultasi
+            <div class="konsultasi-badge">!</div>
+        </a>
+    </div>
+    <!-- Footer -->
+<footer style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: #ffffff; padding: 50px 0 20px; margin-top: 80px;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <!-- Logo dan Deskripsi -->
+            <div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                    <div style="width: 50px; height: 50px; background: #dc143c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div>
+                        <div style="font-size: 22px; font-weight: bold;">TOYOTA</div>
+                        <div style="font-size: 14px; color: #dc143c;">JAKARTA TIMUR</div>
+                    </div>
+                </div>
+                <p style="line-height: 1.6; color: #cccccc; margin-bottom: 20px;">
+                    Dealer resmi Toyota terpercaya di Jakarta dengan berbagai pilihan mobil terbaru. 
+                    Kami memberikan segala kemudahan dan kepuasan pelanggan untuk memilih varian mobil yang diinginkan.
+                </p>
+                
+            </div>
+            
+           
+            
+            <!-- Informasi Kontak -->
+            <div>
+                <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #ffffff; position: relative; padding-bottom: 10px;">
+                    INFORMASI KONTAK
+                    <div style="position: absolute; bottom: 0; left: 0; width: 50px; height: 3px; background: #dc143c;"></div>
+                </h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px; display: flex; align-items: flex-start;">
+                        <i class="fas fa-map-marker-alt" style="color: #dc143c; margin-right: 10px; margin-top: 5px;"></i>
+                        <span style="color: #cccccc;">Jl. Jatinegara Timur Jalan No.55, RT.11/RW.3, Bali Mester, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13310, Indonesia</span>
+                    </li>
+                    <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                        <i class="fas fa-phone" style="color: #dc143c; margin-right: 10px;"></i>
+                        <span style="color: #cccccc;">0851-8336-1023</span>
+                    </li>
+                    <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                        <i class="fas fa-envelope" style="color: #dc143c; margin-right: 10px;"></i>
+                        <span style="color: #cccccc;">raihancendekia@gmail.com</span>
+                    </li>
+                    <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                        <i class="fas fa-clock" style="color: #dc143c; margin-right: 10px;"></i>
+                        <span style="color: #cccccc;">Senin - Sabtu: 08.00 - 17.00 WIB</span>
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+        
+        <!-- Copyright -->
+        <div style="border-top: 1px solid #444444; padding-top: 20px; text-align: center; color: #cccccc; font-size: 14px;">
+            <p>© 2025 by Raden Daruryugu <a href="https://daruryuguu.github.io/web_profile/" target="_blank" style="color: yellow;"><i class="ti ti-globe align-text-top me-3"></i> Profil Web</a>
+            <p style="margin-top: 5px; font-size: 12px;">
+                <a href="#" style="color: #cccccc; margin: 0 10px; text-decoration: none;">Kebijakan Privasi</a> | 
+                <a href="#" style="color: #cccccc; margin: 0 10px; text-decoration: none;">Syarat & Ketentuan</a> | 
+                <a href="#" style="color: #cccccc; margin: 0 10px; text-decoration: none;">Sitemap</a>
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- Back to Top Button -->
+<div id="backToTop" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: #dc143c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s;">
+    <i class="fas fa-arrow-up"></i>
+</div>
+<script>
+    // Slider functionality
+    let slideIndex = 1;
+    let slideInterval;
+    // Initialize slider
+    document.addEventListener('DOMContentLoaded', function() {
+        showSlide(slideIndex);
+        startAutoSlide();
+        
+        // Inisialisasi fungsi untuk dropdown menu
+        initializeDropdownMenus();
+        
+        // Inisialisasi fungsi swipe untuk mobile
+        initializeSwipe();
+        
+        // Inisialisasi fungsi pencarian
+        initializeSearch();
+    });
+    // Change slide with arrow buttons
+    function changeSlide(n) {
+        clearInterval(slideInterval);
+        showSlide(slideIndex += n);
+        startAutoSlide();
+    }
+    // Go to specific slide
+    function currentSlide(n) {
+        clearInterval(slideInterval);
+        showSlide(slideIndex = n);
+        startAutoSlide();
+    }
+    // Show the selected slide
+    function showSlide(n) {
+        let slides = document.getElementsByClassName("slide");
+        let indicators = document.getElementsByClassName("indicator");
+        
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+        
+        for (let i = 0; i < indicators.length; i++) {
+            indicators[i].classList.remove("active");
+        }
+        
+        slides[slideIndex-1].classList.add("active");
+        indicators[slideIndex-1].classList.add("active");
+    }
+    // Auto slide functionality
+    function startAutoSlide() {
+        slideInterval = setInterval(function() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }, 3000); // Change slide every 3 seconds
+    }
+    // Pause auto slide on hover
+    const sliderContainer = document.querySelector('.slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', function() {
+            clearInterval(slideInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', function() {
+            startAutoSlide();
+        });
+    }
+    
+    // Fungsi untuk mendapatkan tipe mobil dari elemen yang diklik
+    function getCarType(element) {
+        // Cari elemen product-card terdekat
+        const card = element.closest('.product-card, .small-product-card, .car-item');
+        if (!card) return null;
+        
+        // Coba dapatkan nama mobil dari elemen dengan class product-name atau small-product-name
+        const nameElement = card.querySelector('.product-name, .small-product-name, h3');
+        if (!nameElement) return null;
+        
+        // Bersihkan nama dan konversi ke format URL-friendly
+        let carName = nameElement.textContent.trim();
+        
+        // Mapping nama mobil ke format yang sesuai untuk URL
+        const carTypeMap = {
+            'Corolla Cross': 'corolla-cross',
+            'Kijang Innova Zenix': 'kijang-innova-zenix',
+            'All New Veloz': 'all-new-veloz',
+            'New Alphard': 'new-alphard',
+            'All New BZ4X': 'all-new-bz4x',
+            'New Yaris Cross': 'new-yaris-cross',
+            'New Agya': 'new-agya',
+            'RAV4 GR Sport PHEV': 'rav4-gr-sport-phev',
+            'New Calya': 'new-calya',
+            'Toyota Yaris Cross': 'new-yaris-cross',
+            'Toyota Alphard': 'new-alphard',
+            'Toyota Fortuner': 'new-fortuner'
+        };
+        
+        // Cari tipe mobil yang sesuai
+        for (const [key, value] of Object.entries(carTypeMap)) {
+            if (carName.includes(key)) {
+                return value;
+            }
+        }
+        
+        // Jika tidak ada dalam mapping, konversi ke lowercase dan ganti spasi dengan dash
+        return carName.toLowerCase().replace(/\s+/g, '-');
+    }
+    // Fungsi untuk mengarahkan ke halaman detail
+    function goToCarDetail(carType) {
+        if (carType) {
+            window.location.href = `detail.html?car=${carType}`;
+        }
+    }
+    
+    // Fungsi untuk menangani klik pada dropdown menu
+    function handleDropdownClick(event) {
+        // Mencegah default behavior dari link
+        event.preventDefault();
+        
+        // Mendapatkan teks dari item yang diklik
+        const clickedItem = event.target.textContent.trim();
+        
+        // Mapping nama mobil ke parameter URL yang sesuai
+        const carTypeMap = {
+            'NEW YARIS CROSS': 'new-yaris-cross',
+            'RAV4 GR SPORT PHEV': 'rav4-gr-sport-phev',
+            'KIJANG INNOVA ZENIX': 'kijang-innova-zenix',
+            'NEW FORTUNER': 'new-fortuner',
+            'NEW RUSH': 'new-rush',
+            'ALL NEW BZ4X': 'all-new-bz4x',
+            'COROLLA CROSS': 'corolla-cross',
+            'ALL NEW RAIZE': 'all-new-raize',
+            'NEW AGYA': 'new-agya',
+            'NEW ALPHARD': 'new-alphard',
+            'ALL NEW AVANZA': 'all-new-avanza',
+            'ALL NEW VELOZ': 'all-new-veloz',
+            'ALL NEW VOXY': 'all-new-voxy',
+            'NEW CALYA': 'new-calya',
+            'NEW ALTIS': 'new-altis',
+            'ALL NEW VIOS': 'all-new-vios',
+            'NEW CAMRY': 'new-camry'
+        };
+        
+        // Mendapatkan tipe mobil dari mapping
+        const carType = carTypeMap[clickedItem];
+        
+        // Jika tipe mobil ditemukan, arahkan ke halaman detail
+        if (carType) {
+            window.location.href = `detail.html?car=${carType}`;
+        }
+    }
+    
+    // Fungsi untuk menginisialisasi dropdown menu
+    function initializeDropdownMenus() {
+        // Mendapatkan semua dropdown item
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        
+        // Menambahkan event listener ke setiap item
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', handleDropdownClick);
+        });
+        
+        // Mendapatkan semua mobile submenu link
+        const mobileSubmenuLinks = document.querySelectorAll('.mobile-submenu-link');
+        
+        // Menambahkan event listener ke setiap mobile submenu link
+        mobileSubmenuLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                // Mencegah default behavior
+                event.preventDefault();
+                
+                // Mendapatkan teks dari link yang diklik
+                const clickedItem = this.textContent.trim();
+                
+                // Mapping nama mobil ke parameter URL yang sesuai
+                const carTypeMap = {
+                    'NEW YARIS CROSS': 'new-yaris-cross',
+                    'RAV4 GR SPORT PHEV': 'rav4-gr-sport-phev',
+                    'KIJANG INNOVA ZENIX': 'kijang-innova-zenix',
+                    'NEW FORTUNER': 'new-fortuner',
+                    'NEW RUSH': 'new-rush',
+                    'ALL NEW BZ4X': 'all-new-bz4x',
+                    'COROLLA CROSS': 'corolla-cross',
+                    'ALL NEW RAIZE': 'all-new-raize',
+                    'NEW AGYA': 'new-agya',
+                    'NEW ALPHARD': 'new-alphard',
+                    'ALL NEW AVANZA': 'all-new-avanza',
+                    'ALL NEW VELOZ': 'all-new-veloz',
+                    'ALL NEW VOXY': 'all-new-voxy',
+                    'NEW CALYA': 'new-calya',
+                    'NEW ALTIS': 'new-altis',
+                    'ALL NEW VIOS': 'all-new-vios',
+                    'NEW CAMRY': 'new-camry'
+                };
+                
+                // Mendapatkan tipe mobil dari mapping
+                const carType = carTypeMap[clickedItem];
+                
+                // Jika tipe mobil ditemukan, arahkan ke halaman detail
+                if (carType) {
+                    window.location.href = `detail.html?car=${carType}`;
+                }
+            });
+        });
+    }
+    
+    // Fungsi untuk menginisialisasi swipe pada slider
+    function initializeSwipe() {
+        // Touch events untuk mobile swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        const sliderContainer = document.querySelector('.slider-container');
+        
+        if (sliderContainer) {
+            sliderContainer.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            sliderContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    // Swipe left
+                    changeSlide(1);
+                }
+                if (touchEndX > touchStartX + 50) {
+                    // Swipe right
+                    changeSlide(-1);
+                }
+            }
+        }
+    }
+    
+    // Tambahkan event listener untuk semua gambar mobil
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gambar di product carousel
+        const productImages = document.querySelectorAll('.product-card img, .small-product-card img');
+        productImages.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function() {
+                const carType = getCarType(this);
+                goToCarDetail(carType);
+            });
+        });
+        
+        // Gambar di hero banner (car-item)
+        const carItems = document.querySelectorAll('.car-item');
+        carItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', function() {
+                const carType = getCarType(this);
+                goToCarDetail(carType);
+            });
+        });
+    });
+    
+    // Mobile Menu Functions
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+    }
+    
+    function closeMobileMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        
+        // Close all submenus and content
+        document.querySelectorAll('.mobile-submenu').forEach(submenu => {
+            submenu.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.mobile-menu-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.mobile-menu-toggle-icon').forEach(icon => {
+            icon.classList.remove('active');
+        });
+    }
+    
+    function toggleMobileSubmenu(submenuId) {
+        const submenu = document.getElementById(submenuId);
+        const icon = document.getElementById(submenuId + '-icon');
+        
+        // Close all other submenus
+        document.querySelectorAll('.mobile-submenu').forEach(otherSubmenu => {
+            if (otherSubmenu.id !== submenuId) {
+                otherSubmenu.classList.remove('active');
+            }
+        });
+        
+        // Reset all other icons
+        document.querySelectorAll('.mobile-menu-toggle-icon').forEach(otherIcon => {
+            if (otherIcon.id !== submenuId + '-icon') {
+                otherIcon.classList.remove('active');
+                otherIcon.classList.remove('fa-chevron-up');
+                otherIcon.classList.add('fa-chevron-down');
+            }
+        });
+        
+        // Toggle current submenu
+        submenu.classList.toggle('active');
+        
+        // Toggle icon
+        icon.classList.toggle('active');
+        if (icon.classList.contains('active')) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        } else {
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
+        
+        // Close all content sections
+        document.querySelectorAll('.mobile-menu-content').forEach(content => {
+            content.classList.remove('active');
+        });
+    }
+    
+    function showMobileContent(contentId) {
+        // Close all content sections
+        document.querySelectorAll('.mobile-menu-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        // Open selected content
+        const content = document.getElementById(contentId + '-content');
+        if (content) {
+            content.classList.add('active');
+        }
+        
+        // Close all submenus
+        document.querySelectorAll('.mobile-submenu').forEach(submenu => {
+            submenu.classList.remove('active');
+        });
+        
+        // Reset all icons
+        document.querySelectorAll('.mobile-menu-toggle-icon').forEach(icon => {
+            icon.classList.remove('active');
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        });
+    }
+    
+    // Product carousel horizontal scroll
+    const productGrid = document.querySelector('.product-grid');
+    if (productGrid) {
+        productGrid.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+            
+            e.preventDefault();
+            productGrid.scrollLeft += e.deltaY > 0 ? 100 : -100;
+        });
+    }
+    
+    // Auto-scroll product carousel on mobile
+    function autoScrollCarousel() {
+        if (window.innerWidth <= 768 && productGrid) {
+            let scrollAmount = 0;
+            const maxScroll = productGrid.scrollWidth - productGrid.clientWidth;
+            
+            setInterval(() => {
+                if (scrollAmount >= maxScroll) {
+                    scrollAmount = 0;
+                } else {
+                    scrollAmount += 280; // width of one card plus gap
+                }
+                productGrid.scrollTo({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }, 3000);
+        }
+    }
+    
+    // Initialize auto-scroll on page load
+    window.addEventListener('load', autoScrollCarousel);
+    
+    // Contact button interactions
+    document.querySelectorAll('.contact-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Add ripple effect
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255,255,255,0.6)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.left = '50%';
+            ripple.style.top = '50%';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.marginLeft = '-10px';
+            ripple.style.marginTop = '-10px';
+            
+            this.style.position = 'relative';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // Add ripple animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+        // Fungsi untuk menampilkan notifikasi pencarian kustom
+        function showSearchMessage(message, type = 'error') {
+            const notification = document.getElementById('customNotification');
+            const messageElement = notification.querySelector('.message');
+            const iconElement = notification.querySelector('.icon');
+            const btnSuggestion = notification.querySelector('.btn-suggestion');
+
+            // Set pesan
+            messageElement.textContent = message;
+
+            // Set tipe notifikasi
+            if (type === 'warning') {
+                notification.style.backgroundColor = '#ff6600';
+                iconElement.className = 'fas fa-exclamation-triangle icon';
+                btnSuggestion.style.display = 'none';
+            } else {
+                notification.style.backgroundColor = '#dc143c';
+                iconElement.className = 'fas fa-exclamation-triangle icon';
+                btnSuggestion.style.display = 'inline-block';
+            }
+
+            // Tampilkan notifikasi dengan animasi
+            notification.classList.add('slideDown');
+            notification.style.display = 'block';
+
+            // Scroll otomatis ke notifikasi
+            setTimeout(() => {
+                notification.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        // Fungsi untuk menyembunyikan notifikasi pencarian
+        function hideSearchMessage() {
+            const notification = document.getElementById('customNotification');
+            notification.classList.remove('slideDown');
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 500);
+        }
+
+        // Fungsi untuk menampilkan saran mobil alternatif
+        function showAlternativeCars() {
+            // Saran mobil alternatif - bisa dikustomisasi
+            const alternatives = ['Corolla Cross', 'Kijang Innova Zenix', 'All New Veloz', 'New Fortuner'];
+            const randomCar = alternatives[Math.floor(Math.random() * alternatives.length)];
+
+            // Cari mobil alternatif
+            const carTypeMap = {
+                'Corolla Cross': 'corolla-cross',
+                'Kijang Innova Zenix': 'kijang-innova-zenix',
+                'All New Veloz': 'all-new-veloz',
+                'New Fortuner': 'new-fortuner'
+            };
+
+            const carType = carTypeMap[randomCar];
+            if (carType) {
+                window.location.href = `model.html?car=${carType}&highlight=true`;
+            }
+        }
+
+        // Fungsi untuk menginisialisasi pencarian
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchSelect = document.getElementById('searchSelect');
+            const searchButton = document.getElementById('searchButton');
+            const mobileSearchInput = document.getElementById('mobileSearchInput');
+            const mobileSearchButton = document.getElementById('mobileSearchButton');
+
+            if (searchButton) {
+                searchButton.addEventListener('click', function() {
+                    const searchTerm = searchInput.value.toLowerCase().trim();
+
+                    if (searchTerm === '') {
+                        // Tampilkan notifikasi jika pencarian kosong
+                        showSearchMessage('Silakan masukkan nama mobil yang ingin dicari', 'warning');
+                        return;
+                    }
+
+                    // Mapping nama mobil ke parameter URL yang sesuai
+                    const carTypeMap = {
+                        'fortuner': 'new-fortuner',
+                        'toyota fortuner': 'new-fortuner',
+                        'new fortuner': 'new-fortuner',
+                        'alphard': 'new-alphard',
+                        'toyota alphard': 'new-alphard',
+                        'new alphard': 'new-alphard',
+                        'avanza': 'all-new-avanza',
+                        'toyota avanza': 'all-new-avanza',
+                        'all new avanza': 'all-new-avanza',
+                        'innova': 'kijang-innova-zenix',
+                        'kijang innova': 'kijang-innova-zenix',
+                        'innova zenix': 'kijang-innova-zenix',
+                        'kijang innova zenix': 'kijang-innova-zenix',
+                        'yaris cross': 'new-yaris-cross',
+                        'toyota yaris cross': 'new-yaris-cross',
+                        'new yaris cross': 'new-yaris-cross',
+                        'rush': 'new-rush',
+                        'toyota rush': 'new-rush',
+                        'new rush': 'new-rush',
+                        'veloz': 'all-new-veloz',
+                        'toyota veloz': 'all-new-veloz',
+                        'all new veloz': 'all-new-veloz',
+                        'agya': 'new-agya',
+                        'toyota agya': 'new-agya',
+                        'new agya': 'new-agya',
+                        'calya': 'new-calya',
+                        'toyota calya': 'new-calya',
+                        'new calya': 'new-calya',
+                        'raize': 'all-new-raize',
+                        'toyota raize': 'all-new-raize',
+                        'all new raize': 'all-new-raize',
+                        'voxy': 'all-new-voxy',
+                        'toyota voxy': 'all-new-voxy',
+                        'all new voxy': 'all-new-voxy',
+                        'vios': 'all-new-vios',
+                        'toyota vios': 'all-new-vios',
+                        'all new vios': 'all-new-vios',
+                        'altis': 'new-altis',
+                        'toyota altis': 'new-altis',
+                        'new altis': 'new-altis',
+                        'camry': 'new-camry',
+                        'toyota camry': 'new-camry',
+                        'new camry': 'new-camry',
+                        'corolla cross': 'corolla-cross',
+                        'toyota corolla cross': 'corolla-cross',
+                        'rav4': 'rav4-gr-sport-phev',
+                        'toyota rav4': 'rav4-gr-sport-phev',
+                        'rav4 gr sport': 'rav4-gr-sport-phev',
+                        'bz4x': 'all-new-bz4x',
+                        'toyota bz4x': 'all-new-bz4x',
+                        'all new bz4x': 'all-new-bz4x'
+                    };
+
+                    // Cari mobil yang sesuai dengan pencarian
+                    let carType = null;
+                    for (const [key, value] of Object.entries(carTypeMap)) {
+                        if (searchTerm.includes(key)) {
+                            carType = value;
+                            break;
+                        }
+                    }
+
+                    if (carType) {
+                        // Arahkan ke halaman model.html dengan parameter mobil
+                        window.location.href = `model.html?car=${carType}&highlight=true`;
+                    } else {
+                        // Jika mobil tidak ditemukan, tampilkan notifikasi kustom
+                        showSearchMessage(' atau lihat saran di bawah ini.');
+                    }
+                });
+            }
+
+            if (mobileSearchButton) {
+                mobileSearchButton.addEventListener('click', function() {
+                    const searchTerm = mobileSearchInput.value.toLowerCase().trim();
+
+                    if (searchTerm === '') {
+                        showSearchMessage('Silakan masukkan nama mobil yang ingin dicari', 'warning');
+                        return;
+                    }
+
+                    // Hide the search message before each search
+                    const searchMessage = document.getElementById('searchMessage');
+                    if (searchMessage) {
+                        searchMessage.style.display = 'none';
+                    }
+
+                    const carTypeMap = {
+                        'fortuner': 'new-fortuner',
+                        'toyota fortuner': 'new-fortuner',
+                        'new fortuner': 'new-fortuner',
+                        'alphard': 'new-alphard',
+                        'toyota alphard': 'new-alphard',
+                        'new alphard': 'new-alphard',
+                        'avanza': 'all-new-avanza',
+                        'toyota avanza': 'all-new-avanza',
+                        'all new avanza': 'all-new-avanza',
+                        'innova': 'kijang-innova-zenix',
+                        'kijang innova': 'kijang-innova-zenix',
+                        'innova zenix': 'kijang-innova-zenix',
+                        'kijang innova zenix': 'kijang-innova-zenix',
+                        'yaris cross': 'new-yaris-cross',
+                        'toyota yaris cross': 'new-yaris-cross',
+                        'new yaris cross': 'new-yaris-cross',
+                        'rush': 'new-rush',
+                        'toyota rush': 'new-rush',
+                        'new rush': 'new-rush',
+                        'veloz': 'all-new-veloz',
+                        'toyota veloz': 'all-new-veloz',
+                        'all new veloz': 'all-new-veloz',
+                        'agya': 'new-agya',
+                        'toyota agya': 'new-agya',
+                        'new agya': 'new-agya',
+                        'calya': 'new-calya',
+                        'toyota calya': 'new-calya',
+                        'new calya': 'new-calya',
+                        'raize': 'all-new-raize',
+                        'toyota raize': 'all-new-raize',
+                        'all new raize': 'all-new-raize',
+                        'voxy': 'all-new-voxy',
+                        'toyota voxy': 'all-new-voxy',
+                        'all new voxy': 'all-new-voxy',
+                        'vios': 'all-new-vios',
+                        'toyota vios': 'all-new-vios',
+                        'all new vios': 'all-new-vios',
+                        'altis': 'new-altis',
+                        'toyota altis': 'new-altis',
+                        'new altis': 'new-altis',
+                        'camry': 'new-camry',
+                        'toyota camry': 'new-camry',
+                        'new camry': 'new-camry',
+                        'corolla cross': 'corolla-cross',
+                        'toyota corolla cross': 'corolla-cross',
+                        'rav4': 'rav4-gr-sport-phev',
+                        'toyota rav4': 'rav4-gr-sport-phev',
+                        'rav4 gr sport': 'rav4-gr-sport-phev',
+                        'bz4x': 'all-new-bz4x',
+                        'toyota bz4x': 'all-new-bz4x',
+                        'all new bz4x': 'all-new-bz4x'
+                    };
+
+                    let carType = null;
+                    for (const [key, value] of Object.entries(carTypeMap)) {
+                        if (searchTerm.includes(key)) {
+                            carType = value;
+                            break;
+                        }
+                    }
+
+                    if (carType) {
+                        window.location.href = `model.html?car=${carType}&highlight=true`;
+                    } else {
+                        // Jika mobil tidak ditemukan, tampilkan notifikasi kustom
+                        showSearchMessage('Hasil pencarian tidak ditemukan . Coba cari mobil lainnya atau lihat saran di bawah ini.');
+                    }
+                });
+            }
+
+            // Tambahkan event listener untuk Enter key pada input pencarian desktop
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchButton.click();
+                    }
+                });
+            }
+
+            // Tambahkan event listener untuk Enter key pada input pencarian mobile
+            if (mobileSearchInput) {
+                mobileSearchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        mobileSearchButton.click();
+                    }
+                });
+            }
+
+            // Event listeners untuk notifikasi kustom
+            const btnClose = document.querySelector('#customNotification .btn-close');
+            const btnSuggestion = document.querySelector('#customNotification .btn-suggestion');
+
+            if (btnClose) {
+                btnClose.addEventListener('click', hideSearchMessage);
+            }
+
+            if (btnSuggestion) {
+                btnSuggestion.addEventListener('click', showAlternativeCars);
+            }
+        }
+    
+    // Dynamic time update with seconds
+    function updateTime() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        
+        // Create blinking colon effect
+        const colon = now.getSeconds() % 2 === 0 ? ':' : '<span class="time-separator">:</span>';
+        
+        const timeString = `${hours}${colon}${minutes}${colon}${seconds}`;
+        const timeElement = document.getElementById('currentTime');
+        if (timeElement) {
+            timeElement.innerHTML = timeString;
+        }
+    }
+    
+    // Update time every second for live effect
+    setInterval(updateTime, 1000);
+    updateTime(); // Initial call
+    
+    // Add hover effects for product cards
+    document.querySelectorAll('.product-card, .small-product-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.02)';
+            this.style.boxShadow = '0 15px 40px rgba(0,0,0,0.2)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Close mobile menu if open
+                closeMobileMenu();
+            }
+        });
+    });
+    
+    // Back to top button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.opacity = '1';
+            backToTopButton.style.visibility = 'visible';
+        } else {
+            backToTopButton.style.opacity = '0';
+            backToTopButton.style.visibility = 'hidden';
+        }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add hover effects for social media icons
+    document.querySelectorAll('footer .social-icons a, footer a').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // FAQ Toggle Function
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const icon = element.querySelector('i');
+        
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-answer').forEach(item => {
+            if (item !== answer) {
+                item.classList.remove('active');
+                item.previousElementSibling.classList.remove('active');
+            }
+        });
+        
+        // Toggle current FAQ item
+        answer.classList.toggle('active');
+        element.classList.toggle('active');
+    }
+</script>
+</body>
+</html>

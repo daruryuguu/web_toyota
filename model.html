@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Model Mobil - Toyota Jakarta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header Styles */
+        .header {
+            background: #dc143c;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #dc143c;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .logo-text {
+            font-weight: bold;
+        }
+        .logo-text .main {
+            font-size: 24px;
+            color: white;
+        }
+        .logo-text .sub {
+            font-size: 16px;
+            color: #f0f0f0;
+        }
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+        }
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .page-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Search Message Styles */
+        .search-message {
+            background-color: #f8f9fa;
+            border-left: 4px solid #dc143c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+        .search-message.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        .search-message h3 {
+            margin-top: 0;
+            color: #dc143c;
+            margin-bottom: 10px;
+        }
+        .search-message p {
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+        .search-message button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: #dc143c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .search-message button:hover {
+            background: #b81030;
+        }
+        
+        /* CSS untuk pesan error */
+        .search-message.error {
+            background-color: #fff8f8;
+            border-left-color: #ff6600;
+        }
+        .search-message.error h3 {
+            color: #ff6600;
+        }
+        .search-message.error button {
+            background: #ff6600;
+        }
+        .search-message.error button:hover {
+            background: #e55500;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .filter-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .filter-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #dc143c;
+            color: white;
+        }
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .product-image {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6600;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .product-category {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .product-category i {
+            color: #dc143c;
+        }
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .product-price {
+            font-weight: bold;
+            color: #dc143c;
+            font-size: 16px;
+        }
+        .product-btn {
+            background: #dc143c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .product-btn:hover {
+            background: #b81030;
+        }
+        
+        /* Highlighted card styles */
+        .product-card.highlighted {
+            border: 3px solid #dc143c;
+            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            animation: pulse-highlight 2s infinite;
+        }
+        @keyframes pulse-highlight {
+            0% {
+                box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(220, 20, 60, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .page-title {
+                font-size: 28px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 24px;
+            }
+            .filter-options {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div class="main">TOYOTA</div>
+                        <div class="sub">JAKARTA TIMUR</div>
+                    </div>
+                </div>
+                <button class="back-btn" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> KEMBALI
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Search Message -->
+            <div class="search-message" id="searchMessage">
+                <h3>Hasil Pencarian</h3>
+                <p>Menampilkan hasil untuk: <span id="searchTerm"></span></p>
+            </div>
+            
+            <h1 class="page-title">SEMUA MODEL MOBIL TOYOTA</h1>
+            <p class="page-subtitle">Jelajahi seluruh lineup mobil Toyota yang tersedia di dealer resmi kami. Dari SUV tangguh hingga sedan mewah, temukan mobil yang sesuai dengan kebutuhan Anda.</p>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3 class="filter-title">Filter Berdasarkan Kategori</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-category="all">Semua</button>
+                    <button class="filter-btn" data-category="suv">SUV</button>
+                    <button class="filter-btn" data-category="mpv">MPV</button>
+                    <button class="filter-btn" data-category="sedan">Sedan</button>
+                    <button class="filter-btn" data-category="hatchback">Hatchback</button>
+                    <button class="filter-btn" data-category="sport">Sports</button>
+                    <button class="filter-btn" data-category="minibus">Minibus</button>
+                </div>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- SUV -->
+                <div class="product-card" data-category="suv" data-car="corolla-cross">
+                    <div class="product-image">
+                        <div class="product-badge">PROMO</div>
+                        <img src="assets/corolla_cross.png" alt="Corolla Cross">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Corolla Cross</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> SUV
+                        </div>
+                        <p class="product-description">SUV hybrid dengan desain elegan dan fitur keselamatan canggih. Menggabungkan kenyamanan sedan dengan ketangguhan SUV.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 574 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="suv" data-car="kijang-innova-zenix">
+                    <div class="product-image">
+                        <div class="product-badge">PROMO</div>
+                        <img src="assets/innova_zenix.png" alt="Kijang Innova Zenix">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Kijang Innova Zenix</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> SUV
+                        </div>
+                        <p class="product-description">MPV premium dengan desain modern dan fitur canggih. Dilengkapi dengan teknologi hybrid untuk kenyamanan dan efisiensi maksimal.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 430 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="suv" data-car="new-yaris-cross">
+                    <div class="product-image">
+                        <img src="assets/all_new_yaris_cross_hev.png" alt="New Yaris Cross">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Yaris Cross</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> SUV
+                        </div>
+                        <p class="product-description">SUV kompak dengan desain stylish dan fitur canggih. Dilengkapi dengan teknologi hybrid untuk efisiensi bahan bakar yang lebih baik.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 353 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="suv" data-car="new-fortuner">
+                    <div class="product-image">
+                        <img src="assets/toyota fortuner.png" alt="New Fortuner">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Fortuner</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> SUV
+                        </div>
+                        <p class="product-description">SUV tangguh dengan desain maskulin dan performa off-road yang handal. Dilengkapi dengan fitur keselamatan canggih dan kabin yang luas.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 555 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="suv" data-car="new-rush">
+                    <div class="product-image">
+                        <img src="assets/rush.png" alt="New Rush">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Rush</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> SUV
+                        </div>
+                        <p class="product-description">SUV kompak dengan desain sporty dan fitur keselamatan lengkap. Ideal untuk keluarga yang aktif dan dinamis.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 280 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="suv" data-car="land-cruizer">
+                    <div class="product-image">
+                        <img src="assets/land_cruiser.png" alt="Land Cruiser">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Land Cruiser</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> SUV
+                        </div>
+                        <p class="product-description">SUV kompak dengan desain sporty dan fitur keselamatan lengkap. Ideal untuk keluarga yang aktif dan dinamis.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 2.6 Milyar</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="suv" data-car="all-new-raize">
+                    <div class="product-image">
+                        <img src="assets/raize.png" alt="All New Raize">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">All New Raize</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> SUV
+                        </div>
+                        <p class="product-description">SUV kompak dengan desain modern dan fitur canggih. Dilengkapi dengan mesin turbo untuk performa yang responsif.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 230 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- MPV -->
+                <div class="product-card" data-category="mpv" data-car="new-alphard">
+                    <div class="product-image">
+                        <img src="assets/toyota alphard.png" alt="New Alphard">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Alphard</h3>
+                        <div class="product-category">
+                            <i class="fas fa-van-shuttle"></i> MPV
+                        </div>
+                        <p class="product-description">MPV premium mewah dengan kabin yang luas dan fitur canggih. Simbol status dan kenyamanan tertinggi untuk perjalanan Anda.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 1.60 Miliar</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="mpv" data-car="all-new-veloz">
+                    <div class="product-image">
+                        <div class="product-badge">PROMO</div>
+                        <img src="assets/all_new_veloz.png" alt="All New Veloz">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">All New Veloz</h3>
+                        <div class="product-category">
+                            <i class="fas fa-van-shuttle"></i> MPV
+                        </div>
+                        <p class="product-description">Varian sporty dari Avanza dengan desain lebih agresif dan fitur yang lebih lengkap untuk pengalaman berkendara yang menyenangkan.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 292 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="mpv" data-car="all-new-voxy">
+                    <div class="product-image">
+                        <img src="assets/All_New_Voxy.png" alt="All New Voxy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">All New Voxy</h3>
+                        <div class="product-category">
+                            <i class="fas fa-van-shuttle"></i> MPV
+                        </div>
+                        <p class="product-description">MPV premium dengan pintu geser dan kabin yang luas. Dilengkapi dengan fitur canggih untuk kenyamanan perjalanan keluarga.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 616 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="mpv" data-car="all-new-avanza">
+                    <div class="product-image">
+                        <img src="assets/All_New_Avanza.png" alt="All New Avanza">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">All New Avanza</h3>
+                        <div class="product-category">
+                            <i class="fas fa-van-shuttle"></i> MPV
+                        </div>
+                        <p class="product-description">MPV keluarga terlaris dengan desain baru yang lebih modern dan fitur keselamatan yang lengkap.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 233 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="mpv" data-car="new-calya">
+                    <div class="product-image">
+                        <img src="assets/New_Calya.png" alt="New Calya">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Calya</h3>
+                        <div class="product-category">
+                            <i class="fas fa-van-shuttle"></i> MPV
+                        </div>
+                        <p class="product-description">MPV kompak dengan harga terjangkau dan konsumsi bahan bakar yang efisien. Ideal untuk keluarga kecil di perkotaan.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 167 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sedan -->
+                <div class="product-card" data-category="sedan" data-car="new-camry">
+                    <div class="product-image">
+                        <img src="assets/New_Camry.png" alt="New Camry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Camry</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car"></i> Sedan
+                        </div>
+                        <p class="product-description">Sedan premium mewah dengan performa yang halus dan fitur canggih. Simbol status dan kenyamanan tertinggi di kelasnya.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 809 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="sedan" data-car="new-altis">
+                    <div class="product-image">
+                        <img src="assets/altis.png" alt="New Altis">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Altis</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car"></i> Sedan
+                        </div>
+                        <p class="product-description">Sedan mid-size dengan desain elegan dan performa yang handal. Dilengkapi dengan fitur keselamatan canggih dan kabin yang nyaman.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 530 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="sedan" data-car="all-new-vios">
+                    <div class="product-image">
+                        <img src="assets/All_new_vios.png" alt="All New Vios">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">All New Vios</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car"></i> Sedan
+                        </div>
+                        <p class="product-description">Sedan kompak dengan desain sporty dan fitur modern. Ideal untuk mobilitas urban dengan konsumsi bahan bakar yang efisien.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 310 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hatchback -->
+                <div class="product-card" data-category="hatchback" data-car="new-agya">
+                    <div class="product-image">
+                        <img src="assets/New_Agya.png" alt="New Agya">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Agya</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> Hatchback
+                        </div>
+                        <p class="product-description">Hatchback kompak dengan desain sporty dan harga terjangkau. Ideal untuk mobilitas urban dengan konsumsi bahan bakar yang efisien.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 170 Juta</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Sports Cars -->
+                <div class="product-card" data-category="sport" data-car="gr-86">
+                    <div class="product-image">
+                        <img src="assets/GR_86.png" alt="GR-86 Sport Cars">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">GR-86 Sport Cars</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> Sport
+                        </div>
+                        <p class="product-description">Sport plug-in hybrid dengan performa sporty dan teknologi terdepan. Menggabungkan efisiensi listrik dengan kekuatan mesin bensin.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 1 Milyar </div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sport" data-car="supra">
+                    <div class="product-image">
+                        <img src="assets/toyota_supra.png" alt="Supra">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Supra</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> Sport
+                        </div>
+                        <p class="product-description">Sport plug-in hybrid dengan performa sporty dan teknologi terdepan. Menggabungkan efisiensi listrik dengan kekuatan mesin bensin.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 2 Milyar</div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Minibus -->
+                <div class="product-card" data-category="minibus" data-car="hiace">
+                    <div class="product-image">
+                        <img src="assets/hi_ace.png" alt="Hiace">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">New Hiace</h3>
+                        <div class="product-category">
+                            <i class="fas fa-car-side"></i> Minibus
+                        </div>
+                        <p class="product-description">Sport plug-in hybrid dengan performa sporty dan teknologi terdepan. Menggabungkan efisiensi listrik dengan kekuatan mesin bensin.</p>
+                        <div class="product-footer">
+                            <div class="product-price">Rp 1 Milyar </div>
+                            <button class="product-btn">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Go back function
+        function goBack() {
+            window.history.back();
+        }
+        
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Show/hide products based on category
+                productCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                        // Add animation
+                        card.style.animation = 'fadeIn 0.5s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Product detail button functionality
+        const detailBtns = document.querySelectorAll('.product-btn');
+        detailBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const carType = this.closest('.product-card').getAttribute('data-car');
+                window.location.href = `detail.html?car=${carType}`;
+            });
+        });
+        
+        // Product image click functionality
+        const productImages = document.querySelectorAll('.product-image img');
+        productImages.forEach(img => {
+            img.addEventListener('click', function() {
+                const carType = this.closest('.product-card').getAttribute('data-car');
+                window.location.href = `detail.html?car=${carType}`;
+            });
+        });
+        
+        // Handle URL parameters for search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const carParam = urlParams.get('car');
+            const highlightParam = urlParams.get('highlight');
+            const searchParam = urlParams.get('search');
+            const notFoundParam = urlParams.get('notfound');
+            
+            const searchMessage = document.getElementById('searchMessage');
+            const searchTermElement = document.getElementById('searchTerm');
+            
+            if (carParam && highlightParam === 'true') {
+                // Tampilkan pesan untuk mobil yang ditemukan
+                searchMessage.classList.add('show');
+                searchMessage.querySelector('h3').textContent = 'Hasil Pencarian Ditemukan';
+                searchTermElement.textContent = getCarNameFromParam(carParam);
+                
+                // Tunggu sebentar sebelum menyoroti card
+                setTimeout(() => {
+                    highlightCarCard(carParam);
+                }, 500);
+            } else if (searchParam) {
+                // Tampilkan pesan untuk pencarian
+                searchMessage.classList.add('show');
+                
+                if (notFoundParam === 'true') {
+                    // Tampilkan pesan jika mobil tidak ditemukan
+                    searchMessage.classList.add('error');
+                    searchMessage.querySelector('h3').textContent = 'Pencarian Tidak Ditemukan';
+                    searchTermElement.innerHTML = `<strong style="color: #ff6600;">hasil tidak ditemukan, mohon masukan kata kunci lain</strong>`;
+                    
+                    // Tambahkan tombol untuk melihat semua mobil
+                    const showAllBtn = document.createElement('button');
+                    showAllBtn.textContent = 'Lihat Semua Mobil';
+                    showAllBtn.onclick = function() {
+                        searchMessage.classList.remove('show');
+                    };
+                    searchMessage.appendChild(showAllBtn);
+                } else {
+                    // Tampilkan pesan untuk pencarian umum
+                    searchMessage.querySelector('h3').textContent = 'Hasil Pencarian';
+                    searchMessage.style.borderLeftColor = '#dc143c';
+                    searchTermElement.textContent = searchParam;
+                }
+            }
+            
+            // Fungsi untuk mendapatkan nama mobil dari parameter
+            function getCarNameFromParam(param) {
+                const carNames = {
+                    'new-fortuner': 'Toyota Fortuner',
+                    'new-alphard': 'Toyota Alphard',
+                    'all-new-avanza': 'Toyota Avanza',
+                    'kijang-innova-zenix': 'Toyota Kijang Innova Zenix',
+                    'new-yaris-cross': 'Toyota Yaris Cross',
+                    'new-rush': 'Toyota Rush',
+                    'all-new-veloz': 'Toyota Veloz',
+                    'new-agya': 'Toyota Agya',
+                    'new-calya': 'Toyota Calya',
+                    'all-new-raize': 'Toyota Raize',
+                    'all-new-voxy': 'Toyota Voxy',
+                    'all-new-vios': 'Toyota Vios',
+                    'new-altis': 'Toyota Altis',
+                    'new-camry': 'Toyota Camry',
+                    'corolla-cross': 'Toyota Corolla Cross',
+                    'land-cruizer': 'Toyota Land Cruiser',
+                    'hilux-single': 'Hilux Single Cabin',
+                    'hilux-rangga': 'Hilux Rangga',
+                    'supra': 'Toyota Supra',
+                    'hiace': 'Toyota Hiace',
+                    'gr-86': 'Toyota GR-86',
+                };
+                
+                return carNames[param] || param;
+            }
+            
+            // Fungsi untuk menyoroti card mobil
+            function highlightCarCard(carParam) {
+                const card = document.querySelector(`[data-car="${carParam}"]`);
+                if (card) {
+                    // Tambahkan kelas highlight
+                    card.classList.add('highlighted');
+                    
+                    // Scroll ke card yang disoroti
+                    card.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                    
+                    // Hapus highlight setelah 5 detik
+                    setTimeout(() => {
+                        card.classList.remove('highlighted');
+                    }, 5000);
+                }
+            }
+        });
+        
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
